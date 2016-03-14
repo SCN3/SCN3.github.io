@@ -20,7 +20,8 @@ Insert  SD card and write the img file to the card.  We can use terminal and ent
 <meta property="og:image" content="http://yoursite.com/figure1.png">
 <meta property="og:image" content="http://yoursite.com/figure2.png">
 <meta property="og:image" content="http://yoursite.com/figure3.JPG">
-<meta property="og:updated_time" content="2016-03-14T14:46:45.000Z">
+<meta property="og:image" content="http://yoursite.com/figure4.png">
+<meta property="og:updated_time" content="2016-03-14T14:58:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Starting with your Raspberry Pi(for Mac OS)">
 <meta name="twitter:description" content="install Raspbian OS for Raspberry Pi
@@ -67,7 +68,7 @@ Insert  SD card and write the img file to the card.  We can use terminal and ent
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -105,17 +106,17 @@ Insert  SD card and write the img file to the card.  We can use terminal and ent
         <h2 id="install-Raspbian-OS-for-Raspberry-Pi"><a href="#install-Raspbian-OS-for-Raspberry-Pi" class="headerlink" title="install Raspbian OS for Raspberry Pi"></a>install Raspbian OS for Raspberry Pi</h2><ol>
 <li><p>Download an img file from <a href="https://www.raspberrypi.org/downloads" target="_blank" rel="external">https://www.raspberrypi.org/downloads</a> </p>
 </li>
-<li><p>Insert  SD card and write the img file to the card. <br> We can use terminal and enter instructions as follows: <img src="/figure1.png" alt=""><br>Notice: If your failed to write to your SD card with “dd” instruction, please check if you have permission to write to your SD card. If your permission is only reading, your can insert your SD card violently. More approaches to solve it: <a href="http://bbs.feng.com/read-htm-tid-3495425.html" target="_blank" rel="external">http://bbs.feng.com/read-htm-tid-3495425.html</a></p>
+<li><p>Insert  SD card and write the img file to the card. <br> We can use terminal and enter instructions as follows: <img src="figure1.png" alt=""><br>Notice: If your failed to write to your SD card with “dd” instruction, please check if you have permission to write to your SD card. If your permission is only reading, your can insert your SD card violently. More approaches to solve it: <a href="http://bbs.feng.com/read-htm-tid-3495425.html" target="_blank" rel="external">http://bbs.feng.com/read-htm-tid-3495425.html</a></p>
 </li>
 </ol>
-<h2 id="Connect-to-Rasberry-Pi-with-serial-port"><a href="#Connect-to-Rasberry-Pi-with-serial-port" class="headerlink" title="Connect to Rasberry Pi with serial port"></a>Connect to Rasberry Pi with serial port</h2><p>The Serial Port on Raspberry Pi is shown as following:<br><img src="figure2.png" alt=""> <br><br>We can connect it as following(While – TXD; Green – RXD; Black – GND):<br><img src="figure3.JPG" alt=""> <br><br>Install a serial driver if you haven’t installed one. (downloaded from <a href="http://www.proliﬁc.com.tw/" target="_blank" rel="external">http://www.proliﬁc.com.tw/</a>) <br><br>Find your serial port using<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls /dev/tty.*</span><br></pre></td></tr></table></figure></p>
-<p>Install “screen” if it hasn’t been installed. <br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install screen</span><br></pre></td></tr></table></figure></p>
-<p>Connect to your Raspberry<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">screen /dev/tty.usbserial 115200</span><br></pre></td></tr></table></figure></p>
+<h2 id="Connect-to-Rasberry-Pi-with-serial-port"><a href="#Connect-to-Rasberry-Pi-with-serial-port" class="headerlink" title="Connect to Rasberry Pi with serial port"></a>Connect to Rasberry Pi with serial port</h2><p>The Serial Port on Raspberry Pi is shown as following:<br><br><img src="figure2.png" alt=""> <br><br>We can connect it as following(While – TXD; Green – RXD; Black – GND):<br><br><img src="figure3.JPG" alt=""> <br><br>Install a serial driver if you haven’t installed one. (downloaded from <a href="http://www.proliﬁc.com.tw/" target="_blank" rel="external">http://www.proliﬁc.com.tw/</a>) <br><br>Find your serial port using <br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ls /dev/tty.*</span><br><span class="line">```&lt;br&gt;</span><br><span class="line">Install &quot;screen&quot; if it hasn&apos;t been installed. &lt;br&gt;</span><br></pre></td></tr></table></figure></p>
+<p>brew install screen<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Connect to your Raspberry &lt;br&gt;</span><br></pre></td></tr></table></figure></p>
+<p>screen /dev/tty.usbserial 115200<br>```<br>Then you can see the infomation about booting of Raspberry as following: <br><br><img src="figure4.png" alt=""></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/14/Starting-with-your-Raspberry-Pi/" data-id="cils3tbtn000065pqttgtwsi7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/14/Starting-with-your-Raspberry-Pi/" data-id="cils48i5z0000fhpqh7v3iyc4" class="article-share-link">Delen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Embedded/">Embedded</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Raspberry-Pi/">Raspberry Pi</a></li></ul>
@@ -128,7 +129,7 @@ Insert  SD card and write the img file to the card.  We can use terminal and ent
   
   
     <a href="/2016/03/09/welcome/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">Ouder</strong>
       <div class="article-nav-title">welcome</div>
     </a>
   
@@ -143,7 +144,7 @@ Insert  SD card and write the img file to the card.  We can use terminal and ent
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
+    <h3 class="widget-title">Categorieën</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Embedded-System/">Embedded System</a></li></ul>
     </div>
@@ -153,7 +154,7 @@ Insert  SD card and write the img file to the card.  We can use terminal and ent
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
+    <h3 class="widget-title">Labels</h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Embedded/">Embedded</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Raspberry-Pi/">Raspberry Pi</a></li></ul>
     </div>
@@ -172,7 +173,7 @@ Insert  SD card and write the img file to the card.  We can use terminal and ent
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archieven</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li></ul>
     </div>
@@ -182,7 +183,7 @@ Insert  SD card and write the img file to the card.  We can use terminal and ent
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Recente berichten</h3>
     <div class="widget">
       <ul>
         
