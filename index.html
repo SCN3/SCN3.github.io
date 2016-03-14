@@ -90,21 +90,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>##install Raspbian OS for Raspberry Pi</p>
-<ol>
+        <h2 id="install-Raspbian-OS-for-Raspberry-Pi"><a href="#install-Raspbian-OS-for-Raspberry-Pi" class="headerlink" title="install Raspbian OS for Raspberry Pi"></a>install Raspbian OS for Raspberry Pi</h2><ol>
 <li><p>Download an img file from <a href="https://www.raspberrypi.org/downloads" target="_blank" rel="external">https://www.raspberrypi.org/downloads</a> </p>
 </li>
 <li><p>Insert  SD card and write the img file to the card. <br> We can use terminal and enter instructions as follows: <img src="/figure1.png" alt=""><br>Notice: If your failed to write to your SD card with “dd” instruction, please check if you have permission to write to your SD card. If your permission is only reading, your can insert your SD card violently. More approaches to solve it: <a href="http://bbs.feng.com/read-htm-tid-3495425.html" target="_blank" rel="external">http://bbs.feng.com/read-htm-tid-3495425.html</a></p>
 </li>
 </ol>
-<p>##Connect to Rasberry Pi with serial port<br>The Serial Port on Raspberry Pi is shown as following:<br><img src="figure2.png" alt=""> <br><br>We can connect it as following(While – TXD; Green – RXD; Black – GND):<br><img src="figure3.JPG" alt=""> <br><br>Install a serial driver if you haven’t installed one. (downloaded from <a href="http://www.proliﬁc.com.tw/" target="_blank" rel="external">http://www.proliﬁc.com.tw/</a>) <br><br>Find your serial port using<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls /dev/tty.*</span><br></pre></td></tr></table></figure></p>
+<h2 id="Connect-to-Rasberry-Pi-with-serial-port"><a href="#Connect-to-Rasberry-Pi-with-serial-port" class="headerlink" title="Connect to Rasberry Pi with serial port"></a>Connect to Rasberry Pi with serial port</h2><p>The Serial Port on Raspberry Pi is shown as following:<br><img src="figure2.png" alt=""> <br><br>We can connect it as following(While – TXD; Green – RXD; Black – GND):<br><img src="figure3.JPG" alt=""> <br><br>Install a serial driver if you haven’t installed one. (downloaded from <a href="http://www.proliﬁc.com.tw/" target="_blank" rel="external">http://www.proliﬁc.com.tw/</a>) <br><br>Find your serial port using<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls /dev/tty.*</span><br></pre></td></tr></table></figure></p>
 <p>Install “screen” if it hasn’t been installed. <br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install screen</span><br></pre></td></tr></table></figure></p>
 <p>Connect to your Raspberry<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">screen /dev/tty.usbserial 115200</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/14/Starting-with-your-Raspberry-Pi/" data-id="cils3qq5x00005fpqocp0p8on" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/14/Starting-with-your-Raspberry-Pi/" data-id="cils3tbtn000065pqttgtwsi7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Embedded/">Embedded</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Raspberry-Pi/">Raspberry Pi</a></li></ul>
@@ -143,7 +142,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/09/welcome/" data-id="cils3qq6100015fpqrj5c06og" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/09/welcome/" data-id="cils3tbtr000165pq9x29gwbr" class="article-share-link">Share</a>
       
       
     </footer>
