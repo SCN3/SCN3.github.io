@@ -64,6 +64,42 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Lab8" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/06/13/Lab8/" class="article-date">
+  <time datetime="2016-06-12T17:26:31.000Z" itemprop="datePublished">2016-06-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/13/Lab8/">Lab8</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/06/13/Lab8/" data-id="cipcv4t3i000bz6pqbplnas2y" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Lab7" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/06/13/Lab7/" class="article-date">
@@ -86,11 +122,198 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="实验连接示意图、实物图"><a href="#实验连接示意图、实物图" class="headerlink" title="实验连接示意图、实物图"></a>实验连接示意图、实物图</h2>
+        <h2 id="实验连接示意图、实物图"><a href="#实验连接示意图、实物图" class="headerlink" title="实验连接示意图、实物图"></a>实验连接示意图、实物图</h2><p><img src="http://scn3.github.io/image/lab7/figure1.png" alt=""></p>
+<h2 id="所用器材列表"><a href="#所用器材列表" class="headerlink" title="所用器材列表"></a>所用器材列表</h2><h4 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h4><pre><code>- Linux实验板卡一块
+- 5V/1A电源一个
+- microUSB线一根
+- 面包板一块
+- MAX7219驱动的8*8LED矩阵一个
+- 面包线若干
+- PC一台
+- 以太网线一根
+</code></pre><h4 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h4><pre><code>- 编译软件
+- Fritzing
+</code></pre><h2 id="外部设备连线图"><a href="#外部设备连线图" class="headerlink" title="外部设备连线图"></a>外部设备连线图</h2><p><img src="http://scn3.github.io/image/lab7/figure2.png" alt=""></p>
+<h2 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h2><h4 id="1-设计方案，画连线示意图"><a href="#1-设计方案，画连线示意图" class="headerlink" title="1. 设计方案，画连线示意图"></a>1. 设计方案，画连线示意图</h4><h4 id="2-在面包板上连线，完成外部电路"><a href="#2-在面包板上连线，完成外部电路" class="headerlink" title="2. 在面包板上连线，完成外部电路"></a>2. 在面包板上连线，完成外部电路</h4><h4 id="3-编写C-C-程序，采用Arduido-ish库或虚拟文件系统访问GPIO，实现在矩阵上显示文字或图案"><a href="#3-编写C-C-程序，采用Arduido-ish库或虚拟文件系统访问GPIO，实现在矩阵上显示文字或图案" class="headerlink" title="3. 编写C/C++程序，采用Arduido-ish库或虚拟文件系统访问GPIO，实现在矩阵上显示文字或图案"></a>3. 编写C/C++程序，采用Arduido-ish库或虚拟文件系统访问GPIO，实现在矩阵上显示文字或图案</h4><pre><code>1) 使用ssh连接上Raspberry
+2) 编写C/C++程序，通过虚拟文件系统控制GPIO
+3) 编译并执行C/C++程序，执行结果如下
+</code></pre><p><img src="http://scn3.github.io/image/lab7/figure3.png" alt=""></p>
+<h4 id="4-编写字符设备驱动程序，直接访问GPIO控制寄存器，能将write-送来的单个字符在矩阵上显示出来"><a href="#4-编写字符设备驱动程序，直接访问GPIO控制寄存器，能将write-送来的单个字符在矩阵上显示出来" class="headerlink" title="4. 编写字符设备驱动程序，直接访问GPIO控制寄存器，能将write() 送来的单个字符在矩阵上显示出来"></a>4. 编写字符设备驱动程序，直接访问GPIO控制寄存器，能将write() 送来的单个字符在矩阵上显示出来</h4><pre><code>1) 编写字符设备驱动的内核模块程序
+2) 编译程序并将内核模块插入
+3) 使用驱动程序在矩阵上显示数字
+</code></pre><p><img src="http://scn3.github.io/image/lab7/figure4.png" alt=""><br><img src="http://scn3.github.io/image/lab7/figure5.png" alt=""><br><img src="http://scn3.github.io/image/lab7/figure6.png" alt=""><br><img src="http://scn3.github.io/image/lab7/figure7.png" alt=""><br><img src="http://scn3.github.io/image/lab7/figure8.png" alt=""><br><img src="http://scn3.github.io/image/lab7/figure9.png" alt=""><br><img src="http://scn3.github.io/image/lab7/figure10.png" alt=""><br><img src="http://scn3.github.io/image/lab7/figure11.png" alt=""><br><img src="http://scn3.github.io/image/lab7/figure12.png" alt=""><br><img src="http://scn3.github.io/image/lab7/figure13.png" alt=""></p>
+<h2 id="代码和解释"><a href="#代码和解释" class="headerlink" title="代码和解释"></a>代码和解释</h2><h4 id="1-利用虚拟文件系统访问GPIO，实现在矩阵上显示文字或图案"><a href="#1-利用虚拟文件系统访问GPIO，实现在矩阵上显示文字或图案" class="headerlink" title="1. 利用虚拟文件系统访问GPIO，实现在矩阵上显示文字或图案"></a>1. 利用虚拟文件系统访问GPIO，实现在矩阵上显示文字或图案</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> DIN 4  <span class="comment">// DIN的GPIO口位置</span></span><span class="meta">#<span class="meta-keyword">define</span> CS 3  <span class="comment">// CS的GPIO口位置</span></span><span class="meta">#<span class="meta-keyword">define</span> CLK 2  <span class="comment">// CLK的GPIO口位置</span></span>GPIO_Pin din, cs, clk;<span class="function"><span class="keyword">int</span> <span class="title">write_byte</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">char</span> b)</span></span>&#123;    <span class="keyword">unsigned</span> <span class="keyword">char</span> i, tmp;    <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;<span class="number">8</span>; i++)&#123;        tmp = (b &amp; <span class="number">0x80</span>) &gt; <span class="number">0</span>;        b &lt;&lt;= <span class="number">1</span>;        GPIO_Pin_Write(&amp;din, tmp);        GPIO_Pin_Write(&amp;clk, <span class="number">1</span>);        GPIO_Pin_Write(&amp;clk, <span class="number">0</span>);    &#125;&#125;<span class="function"><span class="keyword">int</span> <span class="title">write_word</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">char</span> addr, <span class="keyword">unsigned</span> <span class="keyword">char</span> num)</span></span>&#123;    GPIO_Pin_Write(&amp;cs, <span class="number">1</span>);    GPIO_Pin_Write(&amp;cs, <span class="number">0</span>);    GPIO_Pin_Write(&amp;clk, <span class="number">0</span>);    write_byte(addr);    write_byte(num);    GPIO_Pin_Write(&amp;cs, <span class="number">1</span>);&#125;<span class="function"><span class="keyword">int</span> <span class="title">Matrix_init</span><span class="params">()</span></span>&#123;  <span class="comment">// 点阵初始化</span>    write_word(<span class="number">0x09</span>, <span class="number">0x00</span>);  <span class="comment">// 编码模式</span>    write_word(<span class="number">0x0a</span>, <span class="number">0x03</span>); <span class="comment">// 亮度</span>    write_word(<span class="number">0x0b</span>, <span class="number">0x07</span>);  <span class="comment">// 扫描数码管个数</span>    write_word(<span class="number">0x0c</span>, <span class="number">0x01</span>);  <span class="comment">// 工作模式</span>&#125;<span class="function"><span class="keyword">int</span> <span class="title">Matrix_render</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">char</span>* tmp)</span></span>&#123; <span class="comment">// 点阵显示</span>    <span class="keyword">int</span> i;    <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;<span class="number">8</span>; i++)&#123;        <span class="built_in">printf</span>(<span class="string">"%d %d\n"</span>, i, tmp[i]);        write_word(i+<span class="number">1</span>, tmp[i]);    &#125;&#125;<span class="function"><span class="keyword">int</span> <span class="title">Matrix_clear</span><span class="params">()</span></span>&#123; <span class="comment">// 点阵清屏</span>    <span class="keyword">unsigned</span> <span class="keyword">char</span> SCN[]=&#123;        <span class="number">0xFF</span>, <span class="number">0x01</span>, <span class="number">0x01</span>, <span class="number">0xFF</span>, <span class="number">0xFF</span>, <span class="number">0x01</span>, <span class="number">0x01</span>, <span class="number">0xFF</span>    &#125;;    Matrix_render(SCN);&#125;<span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;    GPIO_Pin_export(&amp;din, DIN, GPIO_DIRECTION_OUT);    GPIO_Pin_export(&amp;cs, CS, GPIO_DIRECTION_OUT);    GPIO_Pin_export(&amp;clk, CLK, GPIO_DIRECTION_OUT);    Matrix_init();    Matrix_clear();    <span class="keyword">return</span> <span class="number">0</span>;&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-字符设备驱动程序"><a href="#2-字符设备驱动程序" class="headerlink" title="2. 字符设备驱动程序"></a>2. 字符设备驱动程序</h4><pre><code class="C"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/init.h&gt;</span></span>
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/kernel.h&gt;</span></span>
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/module.h&gt;</span></span>
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/moduleparam.h&gt;</span></span>
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/fs.h&gt;</span></span>
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/miscdevice.h&gt;</span></span>
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/string.h&gt;</span></span>
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/delay.h&gt;</span></span>
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/gpio.h&gt;</span></span>
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/workqueue.h&gt;</span></span>
+
+MODULE_LICENSE(<span class="string">"GPL"</span>);
+
+<span class="meta">#<span class="meta-keyword">define</span> DIN 4</span>
+<span class="meta">#<span class="meta-keyword">define</span> CS 3</span>
+<span class="meta">#<span class="meta-keyword">define</span> CLK 2</span>
+
+<span class="function"><span class="keyword">void</span> <span class="title">write_byte</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">char</span> b)</span></span>{
+    <span class="keyword">unsigned</span> <span class="keyword">char</span> i, tmp;
+    <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;<span class="number">8</span>; i++){
+        tmp = (b &amp; <span class="number">0x80</span>) &gt; <span class="number">0</span>;
+        b &lt;&lt;= <span class="number">1</span>;
+        gpio_set_value(DIN, tmp);
+        gpio_set_value(CLK, <span class="number">1</span>);
+        gpio_set_value(CLK, <span class="number">0</span>);
+    }
+}
+
+<span class="function"><span class="keyword">void</span> <span class="title">write_word</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">char</span> addr, <span class="keyword">unsigned</span> <span class="keyword">char</span> num)</span></span>{
+    gpio_set_value(CLK, <span class="number">0</span>);
+    gpio_set_value(CS, <span class="number">1</span>);
+    gpio_set_value(CS, <span class="number">0</span>);
+    write_byte(addr);
+    write_byte(num);
+    gpio_set_value(CS, <span class="number">1</span>);
+}
+
+<span class="function"><span class="keyword">void</span> <span class="title">Matrix_render</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">char</span>* tmp)</span></span>{ <span class="comment">// 点阵显示</span>
+    <span class="keyword">int</span> i;
+    <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;<span class="number">8</span>; i++){
+        write_word(i+<span class="number">1</span>, tmp[i]);
+    }
+}
+
+<span class="keyword">unsigned</span> <span class="keyword">char</span> digits[][<span class="number">8</span>]={
+    {<span class="number">0x1c</span>, <span class="number">0x22</span>, <span class="number">0x22</span>, <span class="number">0x22</span>, <span class="number">0x22</span>, <span class="number">0x22</span>, <span class="number">0x22</span>, <span class="number">0x1c</span>}, <span class="comment">// 0</span>
+    {<span class="number">0x08</span>, <span class="number">0x18</span>, <span class="number">0x08</span>, <span class="number">0x08</span>, <span class="number">0x08</span>, <span class="number">0x08</span>, <span class="number">0x08</span>, <span class="number">0x1c</span>}, <span class="comment">// 1</span>
+    {<span class="number">0x1c</span>, <span class="number">0x22</span>, <span class="number">0x22</span>, <span class="number">0x04</span>, <span class="number">0x08</span>, <span class="number">0x10</span>, <span class="number">0x20</span>, <span class="number">0x3e</span>}, <span class="comment">// 2</span>
+    {<span class="number">0x1c</span>, <span class="number">0x22</span>, <span class="number">0x02</span>, <span class="number">0x0c</span>, <span class="number">0x02</span>, <span class="number">0x02</span>, <span class="number">0x22</span>, <span class="number">0x1c</span>}, <span class="comment">// 3</span>
+    {<span class="number">0x04</span>, <span class="number">0x0c</span>, <span class="number">0x14</span>, <span class="number">0x14</span>, <span class="number">0x24</span>, <span class="number">0x1e</span>, <span class="number">0x04</span>, <span class="number">0x04</span>}, <span class="comment">// 4</span>
+    {<span class="number">0x3e</span>, <span class="number">0x20</span>, <span class="number">0x20</span>, <span class="number">0x3c</span>, <span class="number">0x02</span>, <span class="number">0x02</span>, <span class="number">0x22</span>, <span class="number">0x1c</span>}, <span class="comment">// 5</span>
+    {<span class="number">0x1c</span>, <span class="number">0x22</span>, <span class="number">0x20</span>, <span class="number">0x3c</span>, <span class="number">0x22</span>, <span class="number">0x22</span>, <span class="number">0x22</span>, <span class="number">0x1c</span>}, <span class="comment">// 6</span>
+    {<span class="number">0x3e</span>, <span class="number">0x24</span>, <span class="number">0x04</span>, <span class="number">0x08</span>, <span class="number">0x08</span>, <span class="number">0x08</span>, <span class="number">0x08</span>, <span class="number">0x08</span>}, <span class="comment">// 7</span>
+    {<span class="number">0x1c</span>, <span class="number">0x22</span>, <span class="number">0x22</span>, <span class="number">0x1c</span>, <span class="number">0x22</span>, <span class="number">0x22</span>, <span class="number">0x22</span>, <span class="number">0x1c</span>}, <span class="comment">// 8</span>
+    {<span class="number">0x1c</span>, <span class="number">0x22</span>, <span class="number">0x22</span>, <span class="number">0x22</span>, <span class="number">0x1e</span>, <span class="number">0x02</span>, <span class="number">0x22</span>, <span class="number">0x1c</span>}, <span class="comment">// 9</span>
+};
+
+<span class="keyword">unsigned</span> <span class="keyword">char</span> SCN[]={
+    <span class="number">0x99</span>, <span class="number">0x01</span>, <span class="number">0x01</span>, <span class="number">0x99</span>, <span class="number">0x99</span>, <span class="number">0x01</span>, <span class="number">0x01</span>, <span class="number">0x99</span>
+};
+
+<span class="function"><span class="keyword">void</span> <span class="title">Matrix_clear</span><span class="params">(<span class="keyword">void</span>)</span></span>{ <span class="comment">// 点阵清屏</span>
+    Matrix_render(SCN);
+}
+
+<span class="function"><span class="keyword">void</span> <span class="title">Matrix_init</span><span class="params">(<span class="keyword">void</span>)</span></span>{ <span class="comment">// 点阵初始化</span>
+    write_word(<span class="number">0x09</span>, <span class="number">0x00</span>); <span class="comment">// 编码模式</span>
+    write_word(<span class="number">0x0a</span>, <span class="number">0x03</span>); <span class="comment">// 亮度</span>
+    write_word(<span class="number">0x0b</span>, <span class="number">0x07</span>); <span class="comment">// 扫描数码管个数</span>
+    write_word(<span class="number">0x0c</span>, <span class="number">0x01</span>); <span class="comment">// 工作模式</span>
+
+    Matrix_clear();
+}
+
+<span class="meta">#<span class="meta-keyword">define</span> BUFFERSIZE 128</span>
+<span class="meta">#<span class="meta-keyword">define</span> DELAYTIME 1</span>
+<span class="keyword">unsigned</span> <span class="keyword">char</span> disp[BUFFERSIZE];
+<span class="keyword">int</span> head = <span class="number">0</span>, tail = <span class="number">0</span>;
+<span class="keyword">static</span> <span class="keyword">struct</span> timer_list timer;
+
+<span class="function"><span class="keyword">void</span> <span class="title">Matrix_next_display</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">long</span>)</span></span>;
+
+<span class="function"><span class="keyword">void</span> <span class="title">ptr_inc</span><span class="params">(<span class="keyword">int</span> *ptr)</span></span>{
+    *ptr = (*ptr + <span class="number">1</span>) % BUFFERSIZE;
+}
+
+<span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">timer_register</span><span class="params">(<span class="keyword">struct</span> timer_list* ptimer)</span></span>{
+    init_timer(ptimer);
+    ptimer-&gt;data = DELAYTIME;
+    ptimer-&gt;expires = jiffies + (DELAYTIME * HZ);
+    ptimer-&gt;function = Matrix_next_display;
+    add_timer(ptimer);
+}
+
+<span class="function"><span class="keyword">void</span> <span class="title">disp_start</span><span class="params">(<span class="keyword">void</span>)</span></span>{
+    timer_register(&amp;timer);
+}
+
+<span class="function"><span class="keyword">void</span> <span class="title">Matrix_next_display</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">long</span> data)</span></span>{
+    <span class="keyword">if</span> (head != tail){
+        <span class="keyword">unsigned</span> <span class="keyword">char</span> *ptr = SCN;
+        <span class="keyword">unsigned</span> <span class="keyword">char</span> c = disp[head];
+        <span class="keyword">if</span> (<span class="string">'0'</span> &lt;= c &amp;&amp; c &lt;= <span class="string">'9'</span>){
+            ptr = digits[c - <span class="string">'0'</span>];
+        }
+        Matrix_render(ptr);
+        ptr_inc(&amp;head);
+        disp_start();
+    }<span class="keyword">else</span>{
+        Matrix_clear();
+    }
+}
+
+<span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">matrix_write</span><span class="params">(<span class="keyword">struct</span> file *file, <span class="keyword">const</span> <span class="keyword">char</span> __user *buffer,
+        size_t count, loff_t *ppos)</span></span>{
+    <span class="keyword">int</span> i;
+    <span class="keyword">if</span> (head == tail &amp;&amp; count &gt; <span class="number">0</span>){
+        disp_start();
+    }
+    <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;count; i++){
+        ptr_inc(&amp;tail);
+        <span class="keyword">if</span> (tail == head)
+            ptr_inc(&amp;head);
+        disp[tail] = buffer[i];
+    }
+    <span class="keyword">return</span> count;
+}
+
+<span class="keyword">static</span> <span class="keyword">struct</span> file_operations matrix_fops = {
+    .owner = THIS_MODULE,
+    .write = matrix_write,
+    .llseek = noop_llseek
+};
+
+<span class="keyword">static</span> <span class="keyword">struct</span> miscdevice matrix_misc_device = {
+    .minor = MISC_DYNAMIC_MINOR,
+    .name = <span class="string">"matrix"</span>,
+    .fops = &amp;matrix_fops
+};
+
+<span class="keyword">static</span> <span class="keyword">int</span> __<span class="function">init <span class="title">matrix_init</span><span class="params">(<span class="keyword">void</span>)</span></span>{
+    <span class="keyword">if</span> (!gpio_is_valid(DIN) || !gpio_is_valid(CLK) || !gpio_is_valid(CS)){
+        printk(KERN_INFO <span class="string">"GPIO_TEST: invalid GPIO\n"</span>);
+        <span class="keyword">return</span> -ENODEV;
+    }
+    misc_register(&amp;matrix_misc_device);
+    gpio_request(DIN, <span class="string">"sysfs"</span>);
+    gpio_direction_output(DIN, <span class="number">0</span>);
+    gpio_request(CS, <span class="string">"sysfs"</span>);
+    gpio_direction_output(CS, <span class="number">1</span>);
+    gpio_request(CLK, <span class="string">"sysfs"</span>);
+    gpio_direction_output(CLK, <span class="number">0</span>);
+    Matrix_init();
+    printk(KERN_INFO<span class="string">"matrix device has been registed.\n"</span>);
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+
+<span class="keyword">static</span> <span class="keyword">void</span> __<span class="function"><span class="built_in">exit</span> <span class="title">matrix_exit</span><span class="params">(<span class="keyword">void</span>)</span></span>{
+    misc_deregister(&amp;matrix_misc_device);
+    printk(KERN_INFO<span class="string">"matrix device has been unregisted.\n"</span>);
+    del_timer(&amp;timer);
+}
+
+module_init(matrix_init);
+module_exit(matrix_exit);
+</code></pre>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/06/13/Lab7/" data-id="cipcur8je0007vvpq9ukikdip" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/06/13/Lab7/" data-id="cipcv4t3g0008z6pq8e1a39hb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Embeded-System/">Embeded System</a></li></ul>
@@ -145,7 +368,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/06/13/Lab5/" data-id="cipcur8ji000bvvpq6y11jniz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/06/13/Lab5/" data-id="cipcv4t3a0004z6pq2dglwcyr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Embeded-System/">Embeded System</a></li></ul>
@@ -216,7 +439,7 @@ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage modules dtbs -j4
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/06/13/Lab6/" data-id="cipcur8jf0009vvpqvincbtnx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/06/13/Lab6/" data-id="cipcv4t3d0006z6pqnz5sa24p" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Embeded-System/">Embeded System</a></li></ul>
@@ -295,7 +518,7 @@ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage modules dtbs -j4
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/06/13/Lab4/" data-id="cipcur8jc0006vvpqcq381jnr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/06/13/Lab4/" data-id="cipcv4t390003z6pqq1jyg2et" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Embeded-System/">Embeded System</a></li></ul>
@@ -344,7 +567,7 @@ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage modules dtbs -j4
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/06/12/Lab3/" data-id="cipcur8ig0001vvpqm97pi7bj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/06/12/Lab3/" data-id="cipcv4t340001z6pqpi7l33vj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Embeded-System/">Embeded System</a></li></ul>
@@ -427,7 +650,7 @@ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage modules dtbs -j4
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/06/12/Lab2/" data-id="cipcur8ic0000vvpqnzzfnukp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/06/12/Lab2/" data-id="cipcv4t300000z6pqwdq8n576" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Embeded-System/">Embeded System</a></li></ul>
@@ -503,7 +726,7 @@ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage modules dtbs -j4
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/14/Starting-with-your-Raspberry-Pi/" data-id="cipcur8jm000fvvpqge9rqetr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/14/Starting-with-your-Raspberry-Pi/" data-id="cipcv4t3o000fz6pq8orb08a0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Embeded-System/">Embeded System</a></li></ul>
@@ -542,7 +765,7 @@ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage modules dtbs -j4
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/09/welcome/" data-id="cipcur8jj000dvvpqlflf7qvl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/09/welcome/" data-id="cipcv4t3l000dz6pqh0yb8tis" class="article-share-link">Share</a>
       
       
     </footer>
@@ -596,6 +819,10 @@ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage modules dtbs -j4
       <ul>
         
           <li>
+            <a href="/2016/06/13/Lab8/">Lab8</a>
+          </li>
+        
+          <li>
             <a href="/2016/06/13/Lab7/">Lab7 字符设备驱动程序</a>
           </li>
         
@@ -609,10 +836,6 @@ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage modules dtbs -j4
         
           <li>
             <a href="/2016/06/13/Lab4/">Lab4 bootloader</a>
-          </li>
-        
-          <li>
-            <a href="/2016/06/12/Lab3/">Lab3 自行车码表</a>
           </li>
         
       </ul>
