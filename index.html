@@ -51,9 +51,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -64,88 +64,34 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-lab2" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Lab2-ARM指令" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/06/12/lab2/" class="article-date">
-  <time datetime="2016-06-12T15:01:25.000Z" itemprop="datePublished">2016-06-12</time>
+    <a href="/2016/06/12/Lab2-ARM指令/" class="article-date">
+  <time datetime="2016-06-12T15:07:05.000Z" itemprop="datePublished">2016-06-12</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/12/Lab2-ARM指令/">Lab2: ARM指令</a>
+    </h1>
+  
+
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <p>##test</p>
+        <p><img src="lab2.pdf" alt=""></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/06/12/lab2/" data-id="cipcpymzp0002nopqk8oe96nm" class="article-share-link">Partager</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Starting-with-your-Raspberry-Pi" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/03/14/Starting-with-your-Raspberry-Pi/" class="article-date">
-  <time datetime="2016-03-14T12:46:30.000Z" itemprop="datePublished">2016-03-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="install-Raspbian-OS-for-Raspberry-Pi"><a href="#install-Raspbian-OS-for-Raspberry-Pi" class="headerlink" title="install Raspbian OS for Raspberry Pi"></a>install Raspbian OS for Raspberry Pi</h2><ol>
-<li><p>Download an img file from <a href="https://www.raspberrypi.org/downloads" target="_blank" rel="external">https://www.raspberrypi.org/downloads</a> </p>
-</li>
-<li><p>Insert  SD card and write the img file to the card. <br> We can use terminal and enter instructions as follows: <img src="../image/Starting-with-your-Raspberry-Pi/figure1.png" alt=""><br><strong>Notice</strong>: If your failed to write to your SD card with “dd” instruction, please check if you have permission to write to your SD card. If your permission is only reading, your can insert your SD card violently. More approaches to solve it: <a href="http://bbs.feng.com/read-htm-tid-3495425.html" target="_blank" rel="external">http://bbs.feng.com/read-htm-tid-3495425.html</a></p>
-</li>
-</ol>
-<h2 id="Connect-to-Raspberry-Pi-with-serial-port"><a href="#Connect-to-Raspberry-Pi-with-serial-port" class="headerlink" title="Connect to Raspberry Pi with serial port"></a>Connect to Raspberry Pi with serial port</h2><ol>
-<li>The Serial Port on Raspberry Pi is shown as following:<br><br><img src="../image/Starting-with-your-Raspberry-Pi/figure2.png" alt=""> <br><br>We can connect it as following(While – TXD; Green – RXD; Black – GND):<br><br><img src="../image/Starting-with-your-Raspberry-Pi/figure3.JPG" alt=""> <br></li>
-<li><p>Install a serial driver if you haven’t installed one. (downloaded from <a href="http://www.proliﬁc.com.tw/" target="_blank" rel="external">http://www.proliﬁc.com.tw/</a>) <br><br>Find your serial port and install “screen” if it hasn’t been installed. </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ls /dev/tty.*</span><br><span class="line">brew install screen</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Connect to your Raspberry</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">screen /dev/tty.usbserial 115200</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>Then you can see the infomation about booting of Raspberry as following: <br><br><img src="../image/Starting-with-your-Raspberry-Pi/figure4.png" alt=""></p>
-<h2 id="Connect-to-Raspberry-Pi-with-LAN"><a href="#Connect-to-Raspberry-Pi-with-LAN" class="headerlink" title="Connect to Raspberry Pi with LAN"></a>Connect to Raspberry Pi with LAN</h2><ol>
-<li>Connect Raspberry Pi to router with cable and connect your Macbook to corresponding LAN.</li>
-<li>Test connection on Mac<img src="../image/Starting-with-your-Raspberry-Pi/figure5.png" alt=""></li>
-<li>Connect to Raspberry <img src="../image/Starting-with-your-Raspberry-Pi/figure6.png" alt=""></li>
-<li>Test connection on Raspbian <img src="../image/Starting-with-your-Raspberry-Pi/figure7.png" alt=""></li>
-</ol>
-<h2 id="Cross-compiling-on-Ubuntu"><a href="#Cross-compiling-on-Ubuntu" class="headerlink" title="Cross compiling(on Ubuntu)"></a>Cross compiling(on Ubuntu)</h2><ol>
-<li><p>Install compiler </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install gcc-arm-linux-gnueabi make ncurses-dev</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Write program<br><img src="../image/Starting-with-your-Raspberry-Pi/figure8.png" alt=""></p>
-</li>
-<li><p>Compile</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arm-linux-gnueabi-gcc hello.c</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Send it to Raspberry</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp a.out pi@192.168.1.101:~/hello.out</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p><img src="../image/Starting-with-your-Raspberry-Pi/figure9.png" alt=""><br>5.Run the program on Raspberry Pi<br><img src="../image/Starting-with-your-Raspberry-Pi/figure10.png" alt=""><br>  Successfully!</p>
-<h2 id="Booting-content"><a href="#Booting-content" class="headerlink" title="Booting content"></a>Booting content</h2><p>Uncompressing Linux… done, booting the kernel.<br>[    0.000000] Booting Linux on physical CPU 0x0<br>[    0.000000] Initializing cgroup subsys cpuset<br>[    0.000000] Initializing cgroup subsys cpu<br>[    0.000000] Initializing cgroup subsys cpuacct<br>[    0.000000] Linux version 4.1.18+ (dc4@dc4-XPS13-9333) (gcc version 4.9.3 (c6<br>[    0.000000] CPU: ARMv6-compatible processor [410fb767] revision 7 (ARMv7), cd<br>[    0.000000] CPU: PIPT / VIPT nonaliasing data cache, VIPT nonaliasing instrue<br>[    0.000000] Machine model: Raspberry Pi Model B Rev 2<br>[    0.000000] cma: Reserved 8 MiB at 0x1b400000<br>[    0.000000] Memory policy: Data cache writeback<br>[    0.000000] Built 1 zonelists in Zone order, mobility grouping on.  Total pa0<br>[    0.000000] Kernel command line: dma.dmachans=0x7f35 bcm2708_fb.fbwidth=656 t<br>[    0.000000] PID hash table entries: 2048 (order: 1, 8192 bytes)<br>[    0.000000] Dentry cache hash table entries: 65536 (order: 6, 262144 bytes)<br>[    0.000000] Inode-cache hash table entries: 32768 (order: 5, 131072 bytes)<br>[    0.000000] Memory: 436836K/458752K available (5792K kernel code, 488K rwdat)<br>[    0.000000] Virtual kernel memory layout:<br>[    0.000000]     vector  : 0xffff0000 - 0xffff1000   (   4 kB)<br>[    0.000000]     fixmap  : 0xffc00000 - 0xfff00000   (3072 kB)<br>[    0.000000]     vmalloc : 0xdc800000 - 0xff000000   ( 552 MB)<br>[    0.000000]     lowmem  : 0xc0000000 - 0xdc000000   ( 448 MB)<br>[    0.000000]     modules : 0xbf000000 - 0xc0000000   (  16 MB)<br>[    0.000000]       .text : 0xc0008000 - 0xc076f1f0   (7581 kB)<br>[    0.000000]       .init : 0xc0770000 - 0xc07c8000   ( 352 kB)<br>[    0.000000]       .data : 0xc07c8000 - 0xc0842260   ( 489 kB)<br>[    0.000000]        .bss : 0xc0842260 - 0xc08f63e0   ( 721 kB)<br>[    0.000000] SLUB: HWalign=32, Order=0-3, MinObjects=0, CPUs=1, Nodes=1<br>[    0.000000] NR_IRQS:522<br>[    0.000000] clocksource stc: mask: 0xffffffff max_cycles: 0xffffffff, max_ids<br>[    0.000016] sched_clock: 32 bits at 1000kHz, resolution 1000ns, wraps every s<br>[    0.000057] Switching to timer-based delay loop, resolution 1000ns<br>[    0.000345] Console: colour dummy device 80x30<br>[    0.001272] console [tty1] enabled<br>[    0.001329] Calibrating delay loop (skipped), value calculated using timer f)<br>[    0.001415] pid_max: default: 32768 minimum: 301<br>[    0.001796] Mount-cache hash table entries: 1024 (order: 0, 4096 bytes)<br>[    0.001867] Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes)<br>[    0.002923] Initializing cgroup subsys blkio<br>[    0.003017] Initializing cgroup subsys memory<br>[    0.003086] Initializing cgroup subsys devices<br>[    0.003151] Initializing cgroup subsys freezer<br>[    0.003212] Initializing cgroup subsys net_cls<br>[    0.003329] CPU: Testing write buffer coherency: ok<br>[    0.003449] ftrace: allocating 19747 entries in 58 pages<br>[    0.107987] Setting up static identity map for 0x81c0 - 0x81f8<br>[    0.110179] devtmpfs: initialized<br>[    0.121007] VFP support v0.3: implementor 41 architecture 1 part 20 variant 5<br>[    0.121462] clocksource jiffies: mask: 0xffffffff max_cycles: 0xffffffff, mas<br>[    0.123475] pinctrl core: initialized pinctrl subsystem<br>[    0.124379] NET: Registered protocol family 16<br>[    0.129874] DMA: preallocated 4096 KiB pool for atomic coherent allocations<br>[    0.131376] bcm2708.uart_clock = 3000000<br>[    0.136262] hw-breakpoint: found 6 breakpoint and 1 watchpoint registers.<br>[    0.136341] hw-breakpoint: maximum watchpoint size is 4 bytes.<br>[    0.136549] Serial: AMBA PL011 UART driver<br>[    0.136851] 20201000.uart: ttyAMA0 at MMIO 0x20201000 (irq = 83, base_baud =2<br>[    0.504867] console [ttyAMA0] enabled<br>[    0.509270] bcm2835-mbox 2000b880.mailbox: mailbox enabled<br>[    0.555239] bcm2708-dmaengine 20007000.dma: DMA legacy API manager at f200705<br>[    0.563970] bcm2708-dmaengine 20007000.dma: Initialized 7 DMA channels (+ 1 )<br>[    0.572537] bcm2708-dmaengine 20007000.dma: Load BCM2835 DMA engine driver<br>[    0.579467] bcm2708-dmaengine 20007000.dma: dma_debug:0<br>[    0.585617] SCSI subsystem initialized<br>[    0.589781] usbcore: registered new interface driver usbfs<br>[    0.595503] usbcore: registered new interface driver hub<br>[    0.601035] usbcore: registered new device driver usb<br>[    0.607059] raspberrypi-firmware soc:firmware: Attached to firmware from 2015<br>[    0.642750] Switched to clocksource stc<br>[    0.695940] FS-Cache: Loaded<br>[    0.699246] CacheFiles: Loaded<br>[    0.718043] NET: Registered protocol family 2<br>[    0.723981] TCP established hash table entries: 4096 (order: 2, 16384 bytes)<br>[    0.731171] TCP bind hash table entries: 4096 (order: 2, 16384 bytes)<br>[    0.737806] TCP: Hash tables configured (established 4096 bind 4096)<br>[    0.744448] UDP hash table entries: 256 (order: 0, 4096 bytes)<br>[    0.750345] UDP-Lite hash table entries: 256 (order: 0, 4096 bytes)<br>[    0.757037] NET: Registered protocol family 1<br>[    0.762009] RPC: Registered named UNIX socket transport module.<br>[    0.768067] RPC: Registered udp transport module.<br>[    0.772841] RPC: Registered tcp transport module.<br>[    0.777576] RPC: Registered tcp NFSv4.1 backchannel transport module.<br>[    0.785293] hw perfevents: enabled with armv6_1176 PMU driver, 3 counters ave<br>[    0.794424] futex hash table entries: 256 (order: -1, 3072 bytes)<br>[    0.816876] VFS: Disk quotas dquot_6.6.0<br>[    0.821259] VFS: Dquot-cache hash table entries: 1024 (order 0, 4096 bytes)<br>[    0.830944] FS-Cache: Netfs ‘nfs’ registered for caching<br>[    0.837706] NFS: Registering the id_resolver key type<br>[    0.843012] Key type id_resolver registered<br>[    0.847236] Key type id_legacy registered<br>[    0.855071] Block layer SCSI generic (bsg) driver version 0.4 loaded (major )<br>[    0.863073] io scheduler noop registered<br>[    0.867075] io scheduler deadline registered (default)<br>[    0.872649] io scheduler cfq registered<br>[    0.879094] BCM2708FB: allocated DMA memory 5b800000<br>[    0.884268] BCM2708FB: allocated DMA channel 0 @ f2007000<br>[    0.894833] Console: switching to colour frame buffer device 82x26<br>[    0.906093] Serial: 8250/16550 driver, 0 ports, IRQ sharing disabled<br>[    0.915871] vc-cma: Videocore CMA driver<br>[    0.921553] vc-cma: vc_cma_base      = 0x00000000<br>[    0.928009] vc-cma: vc_cma_size      = 0x00000000 (0 MiB)<br>[    0.935087] vc-cma: vc_cma_initial   = 0x00000000 (0 MiB)<br>[    0.942383] vc-mem: phys_addr:0x00000000 mem_base=0x1ec00000 mem_size:0x2000)<br>[    0.973033] brd: module loaded<br>[    0.986854] loop: module loaded<br>[    0.992666] vchiq: vchiq_init_state: slot_zero = 0xdb880000, is_master = 0<br>[    1.003220] Loading iSCSI transport class v2.0-870.<br>[    1.011298] usbcore: registered new interface driver smsc95xx<br>[    1.018962] dwc_otg: version 3.00a 10-AUG-2012 (platform bus)<br>[    1.226642] Core Release: 2.80a<br>[    1.231335] Setting default values for core params<br>[    1.237715] Finished setting default values for core params<br>[    1.445134] Using Buffer DMA mode<br>[    1.450034] Periodic Transfer Interrupt Enhancement - disabled<br>[    1.457472] Multiprocessor Interrupt Enhancement - disabled<br>[    1.464698] OTG VER PARAM: 0, OTG VER FLAG: 0<br>[    1.470686] Dedicated Tx FIFOs mode<br>[    1.476278] WARN::dwc_otg_hcd_init:1047: FIQ DMA bounce buffers: virt = 0xdb4<br>[    1.489426] FIQ FSM acceleration enabled for :<br>[    1.489426] Non-periodic Split Transactions<br>[    1.489426] Periodic Split Transactions<br>[    1.489426] High-Speed Isochronous Endpoints<br>[    1.512817] WARN::hcd_init_fiq:412: FIQ on core 0 at 0xc03dd6ac<br>[    1.520402] WARN::hcd_init_fiq:413: FIQ ASM at 0xc03dd988 length 36<br>[    1.528316] WARN::hcd_init_fiq:438: MPHI regs_base at 0xdc896000<br>[    1.536032] dwc_otg 20980000.usb: DWC OTG Controller<br>[    1.542644] dwc_otg 20980000.usb: new USB bus registered, assigned bus numbe1<br>[    1.551680] dwc_otg 20980000.usb: irq 32, io mem 0x00000000<br>[    1.558917] Init: Port Power? op_state=1<br>[    1.564448] Init: Power Port (0)<br>[    1.569538] usb usb1: New USB device found, idVendor=1d6b, idProduct=0002<br>[    1.578011] usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber1<br>[    1.586872] usb usb1: Product: DWC OTG Controller<br>[    1.593185] usb usb1: Manufacturer: Linux 4.1.18+ dwc_otg_hcd<br>[    1.600498] usb usb1: SerialNumber: 20980000.usb<br>[    1.607728] hub 1-0:1.0: USB hub found<br>[    1.613225] hub 1-0:1.0: 1 port detected<br>[    1.619892] usbcore: registered new interface driver usb-storage<br>[    1.627994] mousedev: PS/2 mouse device common for all mice<br>[    1.636243] bcm2835-cpufreq: min=700000 max=700000<br>[    1.643005] sdhci: Secure Digital Host Controller Interface driver<br>[    1.650757] sdhci: Copyright(c) Pierre Ossman<br>[    1.657114] sdhost: log_buf @ db813000 (5b813000)<br>[    1.742828] mmc0: sdhost-bcm2835 loaded - DMA enabled (&gt;1)<br>[    1.750481] sdhci-pltfm: SDHCI platform and OF driver helper<br>[    1.778709] ledtrig-cpu: registered to indicate activity on CPUs<br>[    1.786677] hidraw: raw HID events driver (C) Jiri Kosina<br>[    1.794062] usbcore: registered new interface driver usbhid<br>[    1.801233] usbhid: USB HID core driver<br>[    1.811183] Initializing XFRM netlink socket<br>[    1.817349] Indeed it is in host mode hprt0 = 00021501<br>[    1.884644] NET: Registered protocol family 17<br>[    1.891073] Key type dns_resolver registered<br>[    1.904882] registered taskstats version 1<br>[    1.911013] vc-sm: Videocore shared memory driver<br>[    1.917611] [vc_sm_connected_init]: start<br>[    1.924708] [vc_sm_connected_init]: end - returning 0<br>[    1.933922] Waiting for root device /dev/mmcblk0p2…<br>[    1.950491] mmc0: host does not support reading read-only switch, assuming we<br>[    1.963758] mmc0: new high speed SDHC card at address 0007<br>[    1.971747] mmcblk0: mmc0:0007 SD16G 14.5 GiB<br>[    1.979884]  mmcblk0: p1 p2<br>[    2.046030] EXT4-fs (mmcblk0p2): INFO: recovery required on readonly filesysm<br>[    2.055226] EXT4-fs (mmcblk0p2): write access will be enabled during recovery<br>[    2.064135] usb 1-1: new high-speed USB device number 2 using dwc_otg<br>[    2.072444] Indeed it is in host mode hprt0 = 00001101<br>[    2.273232] usb 1-1: New USB device found, idVendor=0424, idProduct=9512<br>[    2.281773] usb 1-1: New USB device strings: Mfr=0, Product=0, SerialNumber=0<br>[    2.291811] hub 1-1:1.0: USB hub found<br>[    2.297586] hub 1-1:1.0: 3 ports detected<br>[    2.582820] usb 1-1.1: new high-speed USB device number 3 using dwc_otg<br>[    2.703234] usb 1-1.1: New USB device found, idVendor=0424, idProduct=ec00<br>[    2.711890] usb 1-1.1: New USB device strings: Mfr=0, Product=0, SerialNumbe0<br>[    2.724104] smsc95xx v1.0.4<br>[    2.787287] smsc95xx 1-1.1:1.0 eth0: register ‘smsc95xx’ at usb-20980000.usb6<br>[    6.670212] EXT4-fs (mmcblk0p2): recovery complete<br>[    7.754578] EXT4-fs (mmcblk0p2): mounted filesystem with ordered data mode. )<br>[    7.766455] VFS: Mounted root (ext4 filesystem) readonly on device 179:2.<br>[    7.785063] devtmpfs: mounted<br>[    7.791036] Freeing unused kernel memory: 352K (c0770000 - c07c8000)<br>[    8.120043] random: systemd urandom read with 71 bits of entropy available<br>[    8.135687] systemd[1]: systemd 215 running in system mode. (+PAM +AUDIT +SE)<br>[    8.153763] systemd[1]: Detected architecture ‘arm’.<br>[    8.278334] NET: Registered protocol family 10<br>[    8.287127] systemd[1]: Inserted module ‘ipv6’<br>[    8.298320] systemd[1]: Set hostname to <raspberrypi>.<br>[    8.485186] uart-pl011 20201000.uart: no DMA platform data<br>[    8.962076] systemd[1]: Cannot add dependency job for unit display-manager.s.<br>[    8.988689] systemd[1]: Starting Forward Password Requests to Wall Directory.<br>[    9.001240] systemd[1]: Started Forward Password Requests to Wall Directory .<br>[    9.013104] systemd[1]: Expecting device dev-ttyAMA0.device…<br>[    9.024126] systemd[1]: Starting Remote File Systems (Pre).<br>[    9.034594] systemd[1]: Reached target Remote File Systems (Pre).<br>[    9.043094] systemd[1]: Starting Encrypted Volumes.<br>[    9.052638] systemd[1]: Reached target Encrypted Volumes.<br>[    9.060463] systemd[1]: Starting Arbitrary Executable File Formats File Syst.<br>[    9.076922] systemd[1]: Set up automount Arbitrary Executable File Formats F.<br>[    9.090928] systemd[1]: Starting Swap.<br>[    9.099740] systemd[1]: Reached target Swap.<br>[    9.106342] systemd[1]: Expecting device dev-mmcblk0p1.device…<br>[    9.117122] systemd[1]: Starting Root Slice.<br>[    9.126193] systemd[1]: Created slice Root Slice.<br>[    9.133051] systemd[1]: Starting User and Session Slice.<br>[    9.143320] systemd[1]: Created slice User and Session Slice.<br>[    9.151125] systemd[1]: Starting /dev/initctl Compatibility Named Pipe.<br>[    9.162726] systemd[1]: Listening on /dev/initctl Compatibility Named Pipe.<br>[    9.171903] systemd[1]: Starting Delayed Shutdown Socket.<br>[    9.182171] systemd[1]: Listening on Delayed Shutdown Socket.<br>[    9.190086] systemd[1]: Starting Journal Socket (/dev/log).<br>[    9.200511] systemd[1]: Listening on Journal Socket (/dev/log).<br>[    9.208573] systemd[1]: Starting udev Control Socket.<br>[    9.218357] systemd[1]: Listening on udev Control Socket.<br>[    9.225922] systemd[1]: Starting udev Kernel Socket.<br>[    9.235508] systemd[1]: Listening on udev Kernel Socket.<br>[    9.242979] systemd[1]: Starting Journal Socket.<br>[    9.252291] systemd[1]: Listening on Journal Socket.<br>[    9.259542] systemd[1]: Starting System Slice.<br>[    9.268783] systemd[1]: Created slice System Slice.<br>[    9.275886] systemd[1]: Starting File System Check on Root Device…<br>[    9.291574] systemd[1]: Starting system-systemd\x2dfsck.slice.<br>[    9.312581] systemd[1]: Created slice system-systemd\x2dfsck.slice.<br>[    9.327037] systemd[1]: Starting system-getty.slice.<br>[    9.342243] systemd[1]: Created slice system-getty.slice.<br>[    9.351208] systemd[1]: Starting system-serial\x2dgetty.slice.<br>[    9.367031] systemd[1]: Created slice system-serial\x2dgetty.slice.<br>[    9.376451] systemd[1]: Starting Increase datagram queue length…<br>[    9.402038] systemd[1]: Starting Restore / save the current clock…<br>[    9.440522] systemd[1]: Starting udev Coldplug all Devices…<br>[    9.524329] systemd[1]: Started Set Up Additional Binary Formats.<br>[    9.555768] systemd[1]: Starting Load Kernel Modules…<br>[    9.599453] systemd[1]: Mounting POSIX Message Queue File System…<br>[    9.681169] systemd[1]: Mounting Debug File System…<br>[    9.797873] systemd[1]: Mounted Huge Pages File System.<br>[    9.815399] systemd[1]: Starting Create list of required static device nodes.<br>[    9.860999] systemd[1]: Starting Slices.<br>[    9.887329] systemd[1]: Reached target Slices.<br>[    9.918267] systemd[1]: Mounted Debug File System.<br>[    9.928122] systemd[1]: Mounted POSIX Message Queue File System.<br>[    9.941558] systemd[1]: Started File System Check on Root Device.<br>[    9.969750] systemd[1]: Started Increase datagram queue length.<br>[    9.983089] systemd[1]: Started Restore / save the current clock.<br>[   10.013142] systemd[1]: Started Load Kernel Modules.<br>[   10.037897] systemd[1]: Started Create list of required static device nodes .<br>[   10.079575] systemd[1]: Time has been changed<br>[   10.192665] systemd[1]: Started udev Coldplug all Devices.<br>[   10.414316] systemd[1]: Starting Create Static Device Nodes in /dev…<br>[   10.432340] systemd[1]: Mounting Configuration File System…<br>[   10.464723] systemd[1]: Starting Apply Kernel Variables…<br>[   10.511916] systemd[1]: Mounted FUSE Control File System.<br>[   10.563216] systemd[1]: Starting Syslog Socket.         </raspberrypi></p>
-<p>Raspbian GNU/Linux 8 raspberrypi ttyAMA0        </p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/14/Starting-with-your-Raspberry-Pi/" data-id="cipcpymzi0000nopqrq46sqvz" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2016/06/12/Lab2-ARM指令/" data-id="cipcqd8zb0000r4pqkqd2cvsv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -182,7 +128,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/09/welcome/" data-id="cipcpymzn0001nopqkwir7h0r" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2016/03/09/welcome/" data-id="cipcqd8zj0001r4pqgbd6bfuv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -217,16 +163,12 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Articles récents</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         
           <li>
-            <a href="/2016/06/12/lab2/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2016/03/14/Starting-with-your-Raspberry-Pi/">(no title)</a>
+            <a href="/2016/06/12/Lab2-ARM指令/">Lab2: ARM指令</a>
           </li>
         
           <li>
@@ -246,7 +188,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2016 scn3<br>
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
