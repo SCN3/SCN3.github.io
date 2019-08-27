@@ -1,287 +1,0 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  <title>Lab4 bootloader | scn3&#39;s realm</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="实验连接示意图
-所用器材列表硬件- STM32F103核心板一块
-- microUSB线
-- STLinkban板和USB串口板
-软件- 交叉编译软件
-实验步骤、操作的命令和结果连接STM32和其他设备写一个自己的建议bootloader，能通过串口执行两条最简单的指令:
-peek addr以一个字为单位读取内存中addr位置的数据，并以十六进制的形式输出
-poke addr data以一个字为单">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Lab4 bootloader">
-<meta property="og:url" content="http://yoursite.com/2016/06/13/Lab4/index.html">
-<meta property="og:site_name" content="scn3's realm">
-<meta property="og:description" content="实验连接示意图
-所用器材列表硬件- STM32F103核心板一块
-- microUSB线
-- STLinkban板和USB串口板
-软件- 交叉编译软件
-实验步骤、操作的命令和结果连接STM32和其他设备写一个自己的建议bootloader，能通过串口执行两条最简单的指令:
-peek addr以一个字为单位读取内存中addr位置的数据，并以十六进制的形式输出
-poke addr data以一个字为单">
-<meta property="og:image" content="http://scn3.github.io/image/lab4/figure1.png">
-<meta property="og:updated_time" content="2016-06-12T16:36:27.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Lab4 bootloader">
-<meta name="twitter:description" content="实验连接示意图
-所用器材列表硬件- STM32F103核心板一块
-- microUSB线
-- STLinkban板和USB串口板
-软件- 交叉编译软件
-实验步骤、操作的命令和结果连接STM32和其他设备写一个自己的建议bootloader，能通过串口执行两条最简单的指令:
-peek addr以一个字为单位读取内存中addr位置的数据，并以十六进制的形式输出
-poke addr data以一个字为单">
-<meta name="twitter:image" content="http://scn3.github.io/image/lab4/figure1.png">
-  
-    <link rel="alternate" href="/atom.xml" title="scn3&#39;s realm" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  
-
-</head>
-
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">scn3&#39;s realm</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-Lab4" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/06/13/Lab4/" class="article-date">
-  <time datetime="2016-06-13T07:25:06.000Z" itemprop="datePublished">2016-06-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      Lab4 bootloader
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="实验连接示意图"><a href="#实验连接示意图" class="headerlink" title="实验连接示意图"></a>实验连接示意图</h2><p><img src="http://scn3.github.io/image/lab4/figure1.png" alt=""></p>
-<h2 id="所用器材列表"><a href="#所用器材列表" class="headerlink" title="所用器材列表"></a>所用器材列表</h2><h4 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h4><pre><code>- STM32F103核心板一块
-- microUSB线
-- STLinkban板和USB串口板
-</code></pre><h4 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h4><pre><code>- 交叉编译软件
-</code></pre><h2 id="实验步骤、操作的命令和结果"><a href="#实验步骤、操作的命令和结果" class="headerlink" title="实验步骤、操作的命令和结果"></a>实验步骤、操作的命令和结果</h2><h4 id="连接STM32和其他设备"><a href="#连接STM32和其他设备" class="headerlink" title="连接STM32和其他设备"></a>连接STM32和其他设备</h4><h4 id="写一个自己的建议bootloader，能通过串口执行两条最简单的指令"><a href="#写一个自己的建议bootloader，能通过串口执行两条最简单的指令" class="headerlink" title="写一个自己的建议bootloader，能通过串口执行两条最简单的指令:"></a>写一个自己的建议bootloader，能通过串口执行两条最简单的指令:</h4><ol>
-<li>peek addr以一个字为单位读取内存中addr位置的数据，并以十六进制的形式输出</li>
-<li>poke addr data以一个字为单位修改内存中addr位置的数据为data<h2 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h2><h4 id="输入输出接口"><a href="#输入输出接口" class="headerlink" title="输入输出接口"></a>输入输出接口</h4></li>
-</ol>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 串口输出单个字符</span><span class="function"><span class="keyword">void</span> <span class="title">myPutc</span><span class="params">(<span class="keyword">char</span> ch)</span> </span>&#123;    HAL_UART_Transmit(&amp;huart1,(<span class="keyword">uint8_t</span>*)&amp;ch,<span class="number">1</span>,<span class="number">100</span>);&#125;<span class="comment">// 串口输出字符串</span><span class="function"><span class="keyword">void</span> <span class="title">myPuts</span><span class="params">(<span class="keyword">char</span> *str)</span> </span>&#123;<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="built_in">strlen</span>(str); i++)  myPutc(str[i]);&#125;<span class="comment">// 串口读取单个字符（时限time_bound）</span><span class="keyword">int8_t</span> myGetc(<span class="keyword">uint8_t</span> *c, <span class="keyword">uint16_t</span> time_bound) &#123;<span class="keyword">while</span> (time_bound) &#123;  <span class="comment">// 时限控制</span>  <span class="keyword">if</span> (uart_rev.front != uart_rev.rear) &#123;*c = *uart_rev.front;uart_rev.front++;<span class="keyword">if</span> (uart_rev.front &gt;= buf + BUFSIZE)  <span class="comment">// 下标控制</span>  uart_rev.front = buf;<span class="keyword">return</span> <span class="number">0</span>;  &#125;  time_bound--;&#125;<span class="keyword">return</span> (<span class="keyword">int8_t</span>) – <span class="number">1</span>;&#125;<span class="comment">// 串口读取字符串</span><span class="keyword">int8_t</span> myGets(<span class="keyword">uint8_t</span> *str, <span class="keyword">uint16_t</span> bound) &#123;<span class="keyword">int</span> count = <span class="number">0</span>;bound--;<span class="keyword">while</span> (count &lt; bound) &#123;  <span class="keyword">if</span> (uart_rev.front != uart_rev.rear) &#123;    <span class="keyword">char</span> ch = *uart_rev.front;    uart_rev.front++;    <span class="keyword">if</span> (uart_rev.front &gt; buf + BUFSIZE)      uart_rev.front = buf;    <span class="keyword">if</span> (ch == <span class="string">'\r'</span>)  <span class="comment">// 处理换行</span>      <span class="keyword">break</span>;      *str = ch;    <span class="keyword">if</span> (ch != <span class="string">' '</span>) &#123;  <span class="comment">// 非空有效</span>      str++;      count++;    &#125;  &#125;&#125;*str = <span class="string">'\0'</span>;<span class="keyword">return</span> count;&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="中断处理"><a href="#中断处理" class="headerlink" title="中断处理"></a>中断处理</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">HAL_UART_RxCpltCallback</span><span class="params">(UART_HandleTypeDef  *UartHandle)</span> </span>&#123;  <span class="keyword">uint8_t</span> ret = HAL_OK;    <span class="keyword">char</span> ch = *uart_rev.rear;    myPutc(ch);    <span class="keyword">if</span> (c == <span class="string">'\r'</span>)  <span class="comment">// 回车补’\n’</span>        myPutc(<span class="string">'\n'</span>);        <span class="comment">// 移动buf指针</span>    uart_rev.rear++;    <span class="keyword">if</span> (uart_rev.rear &gt; buf + BUFSIZE)      uart_rev.rear = buf;    <span class="keyword">if</span> (uart_rev.rear == uart_rev.front) &#123;        uart_rev.front++;    	 <span class="keyword">if</span> (uart_rev.front &gt; buf + BUFSIZE)     		uart_rev.front = buf;    &#125;    <span class="keyword">do</span>&#123;         &#125;<span class="keyword">while</span>(HAL_UART_Receive_IT(UartHandle, uart_rev.rear, <span class="number">1</span>) != HAL_OK);&#125;         <span class="function"><span class="keyword">void</span> <span class="title">USART1_IRQHandler</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;    <span class="comment">//调用HAL函数库自带的处理函数</span>    HAL_UART_IRQHandler(&amp;huart1);&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="命令处理"><a href="#命令处理" class="headerlink" title="命令处理"></a>命令处理</h4><pre><code class="C"><span class="keyword">while</span> (<span class="number">1</span>) {
-  <span class="keyword">char</span> cmd[MAXLEN];
-  <span class="keyword">char</span> s2[MAXLEN];
-  count = <span class="number">0</span>;
-  myPuts(<span class="string">"Please input your instruction: "</span>);
-  count = myGets((<span class="keyword">uint8_t</span>*)s1, MAXLEN); <span class="comment">// 获取输入</span>
-  <span class="built_in">sscanf</span>(s1, <span class="string">"%s"</span>, cmd);
-  <span class="keyword">if</span> (<span class="built_in">strcmp</span>(cmd, <span class="string">"peek"</span>) == <span class="number">0</span>) { <span class="comment">// “peek”命令</span>
-<span class="keyword">int</span> addr;
-<span class="keyword">int</span> res = <span class="built_in">sscanf</span>(s1 + PEEKLEN, “%x %s”, &amp;addr, s2);
-<span class="keyword">if</span> (res == <span class="number">1</span>) {
-  <span class="built_in">sprintf</span>(s2, <span class="string">"peek: %x %x\r\n, addr, *((int *)addr)"</span>);
-  myPuts(s2);  <span class="comment">// 输出结果</span>
-}
-<span class="keyword">else</span> myPuts(<span class="string">"error\r\n"</span>);
-  }
-  <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">strcmp</span>(cmd, <span class="string">"poke"</span>) == <span class="number">0</span>) {
-<span class="keyword">int</span> addr, data;
-<span class="keyword">int</span> res = <span class="built_in">sscanf</span>(str + POKELEN, <span class="string">"%x %x %s"</span>, &amp;addr, &amp;data, s);  
-<span class="keyword">if</span> (res == <span class="number">2</span>) {
-  *((<span class="keyword">int</span> *)addr) = data; <span class="comment">// 写入数据</span>
-  <span class="built_in">sprintf</span>(s2, <span class="string">"poke: %x %x\r\n"</span>, addr, *((<span class="keyword">int</span> *)addr));
-  myPuts(s2); 
-}
-<span class="keyword">else</span> myPuts(<span class="string">"error\r\n"</span>);  <span class="comment">// 出错</span>
-  }
-           <span class="keyword">else</span> myPuts(<span class="string">"error\r\n"</span>);   <span class="comment">// 非peek或poke命令</span>
-}
-</code></pre>
-<h2 id="结果与分析"><a href="#结果与分析" class="headerlink" title="结果与分析"></a>结果与分析</h2><p> poke命令执行完之后，peek对应地址能得到正确的数据，符合实验预期。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/06/13/Lab4/" data-id="cjfloe7wf000338pqly87z5js" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Embeded-System/">Embeded System</a></li></ul>
-
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2016/06/13/Lab6/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Lab6 Linux系统调用
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2016/06/12/Lab3/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Lab3 自行车码表</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Embeded-System/">Embeded System</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/Embeded-System/" style="font-size: 10px;">Embeded System</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2018/04/04/a-python-code-shippet/">a python code shippet</a>
-          </li>
-        
-          <li>
-            <a href="/2016/06/13/Lab8/">Lab8 网络LED矩阵显示器</a>
-          </li>
-        
-          <li>
-            <a href="/2016/06/13/Lab7/">Lab7 字符设备驱动程序</a>
-          </li>
-        
-          <li>
-            <a href="/2016/06/13/Lab5/">Lab5 uC/OS 室温计</a>
-          </li>
-        
-          <li>
-            <a href="/2016/06/13/Lab6/">Lab6 Linux系统调用</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2018 scn3<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/script.js"></script>
-
-  </div>
-</body>
-</html>
