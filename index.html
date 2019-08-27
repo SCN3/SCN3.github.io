@@ -51,9 +51,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -90,9 +90,808 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/04/a-python-code-shippet/" data-id="cjzu39z010001xtngqeuinvk3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/04/04/a-python-code-shippet/" data-id="cjzu3flpx000h0qngxkqjqplq" class="article-share-link">Partager</a>
       
       
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Lab8" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/06/13/Lab8/" class="article-date">
+  <time datetime="2016-06-13T08:26:31.000Z" itemprop="datePublished">2016-06-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/13/Lab8/">Lab8 网络LED矩阵显示器</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="实验连接示意图、实物图"><a href="#实验连接示意图、实物图" class="headerlink" title="实验连接示意图、实物图"></a>实验连接示意图、实物图</h2><p><img src="http://scn3.github.io/image/lab8/figure1.png" alt=""></p>
+<h2 id="所用器材列表"><a href="#所用器材列表" class="headerlink" title="所用器材列表"></a>所用器材列表</h2><h4 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h4><pre><code>- Linux实验板卡一块
+- 5V/1A电源一个
+- microUSB线一根
+- 面包板一块
+- MAX7219驱动的8*8LED矩阵一个
+- 面包线若干
+- PC一台
+- 以太网线一根
+</code></pre><h4 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h4><pre><code>- 编译软件
+- Fritzing
+</code></pre><h2 id="外部设备连线图"><a href="#外部设备连线图" class="headerlink" title="外部设备连线图"></a>外部设备连线图</h2><p><img src="http://scn3.github.io/image/lab7/figure2.png" alt=""></p>
+<h2 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h2><h4 id="1-设计方案，画连线示意图"><a href="#1-设计方案，画连线示意图" class="headerlink" title="1. 设计方案，画连线示意图"></a>1. 设计方案，画连线示意图</h4><h4 id="2-在面包板上连线，画连线示意图"><a href="#2-在面包板上连线，画连线示意图" class="headerlink" title="2. 在面包板上连线，画连线示意图"></a>2. 在面包板上连线，画连线示意图</h4><h4 id="3-编写Linux应用程序，能通过第七次实验的设备驱动程序控制LED矩阵显示字符串，每个字符停留500ms"><a href="#3-编写Linux应用程序，能通过第七次实验的设备驱动程序控制LED矩阵显示字符串，每个字符停留500ms" class="headerlink" title="3. 编写Linux应用程序，能通过第七次实验的设备驱动程序控制LED矩阵显示字符串，每个字符停留500ms"></a>3. 编写Linux应用程序，能通过第七次实验的设备驱动程序控制LED矩阵显示字符串，每个字符停留500ms</h4><pre><code>1) 使用ssh连接上Raspberry pi 2
+2) 使用insmod将实验七的模块插入
+3) 编写C代码，通过设备驱动程序控制LED矩阵显示字符串
+</code></pre><h4 id="4-编写Linux应用程序，能通过TCP接受一个连接，将发来的文字在LED矩阵上流动显示出来"><a href="#4-编写Linux应用程序，能通过TCP接受一个连接，将发来的文字在LED矩阵上流动显示出来" class="headerlink" title="4. 编写Linux应用程序，能通过TCP接受一个连接，将发来的文字在LED矩阵上流动显示出来"></a>4. 编写Linux应用程序，能通过TCP接受一个连接，将发来的文字在LED矩阵上流动显示出来</h4><h4 id="5-用telnet连接linux板卡，发送字符串来显示"><a href="#5-用telnet连接linux板卡，发送字符串来显示" class="headerlink" title="5. 用telnet连接linux板卡，发送字符串来显示"></a>5. 用telnet连接linux板卡，发送字符串来显示</h4><pre><code>1) 使用telnet命令连接Raspberry pi并发送字符串“0123”
+2) 观察是否连接成功，板卡上是否接收到发来的字符串
+3) 观察点阵能否正常显示
+</code></pre><p><img src="http://scn3.github.io/image/lab7/figure3.png" alt=""></p>
+<h2 id="代码和解释"><a href="#代码和解释" class="headerlink" title="代码和解释"></a>代码和解释</h2><h4 id="1-通过实验七的设备驱动程序控制LED矩阵显示字符串"><a href="#1-通过实验七的设备驱动程序控制LED矩阵显示字符串" class="headerlink" title="1. 通过实验七的设备驱动程序控制LED矩阵显示字符串"></a>1. 通过实验七的设备驱动程序控制LED矩阵显示字符串</h4><pre><code class="C"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span>
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span>
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span>
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/stat.h&gt;</span></span>
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fcntl.h&gt;</span></span>
+
+<span class="keyword">int</span> Matrix;
+
+<span class="meta">#<span class="meta-keyword">define</span> ALLCHAR <span class="string">"0123456789abcdefghijklmnopqrstuvwxyz"</span> <span class="comment">// 依次显示的字符</span></span>
+
+<span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{
+    Matrix = open(<span class="string">"/dev/matrix"</span>, O_WRONLY);
+    <span class="keyword">if</span> (Matrix &lt; <span class="number">0</span>){  <span class="comment">// 打开失败</span>
+        <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"Cound not open matrix device"</span>);
+        <span class="built_in">exit</span>(<span class="number">1</span>);
+    }
+    write(Matrix, ALLCHAR, <span class="built_in">strlen</span>(ALLCHAR));  <span class="comment">// 写入</span>
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+</code></pre>
+<h4 id="2-通过TCP接受连接并将发来的字符显示"><a href="#2-通过TCP接受连接并将发来的字符显示" class="headerlink" title="2. 通过TCP接受连接并将发来的字符显示"></a>2. 通过TCP接受连接并将发来的字符显示</h4><pre><code class="C"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span>
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span>
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span>
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span>
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span>
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/stat.h&gt;</span></span>
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fcntl.h&gt;</span></span>
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;netinet/in.h&gt;</span></span>
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;arpa/inet.h&gt;</span></span>
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/socket.h&gt;</span>====</span>
+
+<span class="keyword">int</span> Matrix;
+<span class="keyword">int</span> server;
+
+<span class="meta">#<span class="meta-keyword">define</span> PORT 8080</span>
+<span class="meta">#<span class="meta-keyword">define</span> ADDR <span class="string">"0.0.0.0"</span></span>
+<span class="meta">#<span class="meta-keyword">define</span> QUEUE 20</span>
+
+<span class="meta">#<span class="meta-keyword">define</span> BUFF_SIZE 2048</span>
+
+<span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{
+    <span class="comment">// 打开matrix</span>
+    Matrix = open(<span class="string">"/dev/matrix"</span>, O_WRONLY);
+    <span class="keyword">if</span> (Matrix &lt; <span class="number">0</span>){
+        <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"Cound not open matrix device\n"</span>);
+        <span class="built_in">exit</span>(<span class="number">1</span>);
+    }
+    <span class="comment">// 建立服务器</span>
+    <span class="keyword">int</span> server = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+
+    <span class="keyword">struct</span> sockaddr_in serverAddr;
+    serverAddr.sin_family = AF_INET;
+    serverAddr.sin_addr.s_addr = inet_addr(ADDR);
+    serverAddr.sin_port = htons(PORT);
+
+    <span class="comment">// 绑定ip以及端口</span>
+    <span class="keyword">if</span> (bind(server, (<span class="keyword">struct</span> sockaddr*)&amp;serverAddr, <span class="keyword">sizeof</span>(serverAddr)) == <span class="number">-1</span>){
+        <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"Count not bind %s:%d\n"</span>, ADDR, PORT);
+        <span class="built_in">exit</span>(<span class="number">1</span>);
+    }
+
+    <span class="keyword">if</span> (listen(server, QUEUE) == <span class="number">-1</span>){
+        <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"Listen error\n"</span>);
+        <span class="built_in">exit</span>(<span class="number">1</span>);
+    }
+
+    <span class="built_in">printf</span>(<span class="string">"Server running at %s:%d\n"</span>, ADDR, PORT);
+
+    <span class="keyword">while</span> (<span class="number">1</span>){
+        <span class="keyword">struct</span> sockaddr_in clientAddr;
+        <span class="keyword">socklen_t</span> length = <span class="keyword">sizeof</span>(clientAddr);
+
+        <span class="comment">// 对连入的连接进行处理</span>
+        <span class="keyword">int</span> conn = accept(server, (<span class="keyword">struct</span> sockaddr*)&amp;clientAddr, &amp;length);
+        <span class="keyword">if</span> (conn &lt; <span class="number">0</span>){
+            <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"Connect error"</span>);
+            <span class="built_in">exit</span>(<span class="number">1</span>);
+        }
+
+        <span class="built_in">printf</span>(<span class="string">"A new connection from %s:%d\n"</span>, inet_ntoa(clientAddr.sin_addr), clientAddr.sin_port);
+
+        <span class="comment">// 处理连接发送过来的字符</span>
+        <span class="keyword">while</span> (<span class="number">1</span>){
+            <span class="keyword">char</span> receiveBuf[BUFF_SIZE];
+            <span class="keyword">int</span> count;
+            <span class="built_in">memset</span>(receiveBuf, <span class="number">0</span>, <span class="keyword">sizeof</span>(receiveBuf));
+
+            <span class="comment">// 接收字符</span>
+            count = recv(conn, receiveBuf, <span class="keyword">sizeof</span>(receiveBuf), <span class="number">0</span>);
+
+            <span class="comment">// 如果接收到的字符为空，则表示离开</span>
+            <span class="keyword">if</span> (count == <span class="number">0</span>){
+                close(conn);
+                <span class="keyword">break</span>;
+            }
+
+            <span class="comment">// 将接收到的所有字符发送给matrix进行显示</span>
+            write(Matrix, receiveBuf, count);
+        }
+    }
+    close(server);
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/06/13/Lab8/" data-id="cjzu3flp900030qngrvntdlv9" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Embeded-System/">Embeded System</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Lab7" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/06/13/Lab7/" class="article-date">
+  <time datetime="2016-06-13T08:09:33.000Z" itemprop="datePublished">2016-06-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/13/Lab7/">Lab7 字符设备驱动程序</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="实验连接示意图、实物图"><a href="#实验连接示意图、实物图" class="headerlink" title="实验连接示意图、实物图"></a>实验连接示意图、实物图</h2><p><img src="http://scn3.github.io/image/lab7/figure1.png" alt=""></p>
+<h2 id="所用器材列表"><a href="#所用器材列表" class="headerlink" title="所用器材列表"></a>所用器材列表</h2><h4 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h4><pre><code>- Linux实验板卡一块
+- 5V/1A电源一个
+- microUSB线一根
+- 面包板一块
+- MAX7219驱动的8*8LED矩阵一个
+- 面包线若干
+- PC一台
+- 以太网线一根
+</code></pre><h4 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h4><pre><code>- 编译软件
+- Fritzing
+</code></pre><h2 id="外部设备连线图"><a href="#外部设备连线图" class="headerlink" title="外部设备连线图"></a>外部设备连线图</h2><p><img src="http://scn3.github.io/image/lab7/figure2.png" alt=""></p>
+<h2 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h2><h4 id="1-设计方案，画连线示意图"><a href="#1-设计方案，画连线示意图" class="headerlink" title="1. 设计方案，画连线示意图"></a>1. 设计方案，画连线示意图</h4><h4 id="2-在面包板上连线，完成外部电路"><a href="#2-在面包板上连线，完成外部电路" class="headerlink" title="2. 在面包板上连线，完成外部电路"></a>2. 在面包板上连线，完成外部电路</h4><h4 id="3-编写C-C-程序，采用Arduido-ish库或虚拟文件系统访问GPIO，实现在矩阵上显示文字或图案"><a href="#3-编写C-C-程序，采用Arduido-ish库或虚拟文件系统访问GPIO，实现在矩阵上显示文字或图案" class="headerlink" title="3. 编写C/C++程序，采用Arduido-ish库或虚拟文件系统访问GPIO，实现在矩阵上显示文字或图案"></a>3. 编写C/C++程序，采用Arduido-ish库或虚拟文件系统访问GPIO，实现在矩阵上显示文字或图案</h4><pre><code>1) 使用ssh连接上Raspberry
+2) 编写C/C++程序，通过虚拟文件系统控制GPIO
+3) 编译并执行C/C++程序，执行结果如下
+</code></pre><p><img src="http://scn3.github.io/image/lab7/figure3.png" alt=""></p>
+<h4 id="4-编写字符设备驱动程序，直接访问GPIO控制寄存器，能将write-送来的单个字符在矩阵上显示出来"><a href="#4-编写字符设备驱动程序，直接访问GPIO控制寄存器，能将write-送来的单个字符在矩阵上显示出来" class="headerlink" title="4. 编写字符设备驱动程序，直接访问GPIO控制寄存器，能将write() 送来的单个字符在矩阵上显示出来"></a>4. 编写字符设备驱动程序，直接访问GPIO控制寄存器，能将write() 送来的单个字符在矩阵上显示出来</h4><pre><code>1) 编写字符设备驱动的内核模块程序
+2) 编译程序并将内核模块插入
+3) 使用驱动程序在矩阵上显示数字
+</code></pre><p><img src="http://scn3.github.io/image/lab7/figure4.png" alt=""><br><img src="http://scn3.github.io/image/lab7/figure5.png" alt=""><br><img src="http://scn3.github.io/image/lab7/figure6.png" alt=""><br><img src="http://scn3.github.io/image/lab7/figure7.png" alt=""><br><img src="http://scn3.github.io/image/lab7/figure8.png" alt=""><br><img src="http://scn3.github.io/image/lab7/figure9.png" alt=""><br><img src="http://scn3.github.io/image/lab7/figure10.png" alt=""><br><img src="http://scn3.github.io/image/lab7/figure11.png" alt=""><br><img src="http://scn3.github.io/image/lab7/figure12.png" alt=""><br><img src="http://scn3.github.io/image/lab7/figure13.png" alt=""></p>
+<h2 id="代码和解释"><a href="#代码和解释" class="headerlink" title="代码和解释"></a>代码和解释</h2><h4 id="1-利用虚拟文件系统访问GPIO，实现在矩阵上显示文字或图案"><a href="#1-利用虚拟文件系统访问GPIO，实现在矩阵上显示文字或图案" class="headerlink" title="1. 利用虚拟文件系统访问GPIO，实现在矩阵上显示文字或图案"></a>1. 利用虚拟文件系统访问GPIO，实现在矩阵上显示文字或图案</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> DIN 4  <span class="comment">// DIN的GPIO口位置</span></span><span class="meta">#<span class="meta-keyword">define</span> CS 3  <span class="comment">// CS的GPIO口位置</span></span><span class="meta">#<span class="meta-keyword">define</span> CLK 2  <span class="comment">// CLK的GPIO口位置</span></span>GPIO_Pin din, cs, clk;<span class="function"><span class="keyword">int</span> <span class="title">write_byte</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">char</span> b)</span></span>&#123;    <span class="keyword">unsigned</span> <span class="keyword">char</span> i, tmp;    <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;<span class="number">8</span>; i++)&#123;        tmp = (b &amp; <span class="number">0x80</span>) &gt; <span class="number">0</span>;        b &lt;&lt;= <span class="number">1</span>;        GPIO_Pin_Write(&amp;din, tmp);        GPIO_Pin_Write(&amp;clk, <span class="number">1</span>);        GPIO_Pin_Write(&amp;clk, <span class="number">0</span>);    &#125;&#125;<span class="function"><span class="keyword">int</span> <span class="title">write_word</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">char</span> addr, <span class="keyword">unsigned</span> <span class="keyword">char</span> num)</span></span>&#123;    GPIO_Pin_Write(&amp;cs, <span class="number">1</span>);    GPIO_Pin_Write(&amp;cs, <span class="number">0</span>);    GPIO_Pin_Write(&amp;clk, <span class="number">0</span>);    write_byte(addr);    write_byte(num);    GPIO_Pin_Write(&amp;cs, <span class="number">1</span>);&#125;<span class="function"><span class="keyword">int</span> <span class="title">Matrix_init</span><span class="params">()</span></span>&#123;  <span class="comment">// 点阵初始化</span>    write_word(<span class="number">0x09</span>, <span class="number">0x00</span>);  <span class="comment">// 编码模式</span>    write_word(<span class="number">0x0a</span>, <span class="number">0x03</span>); <span class="comment">// 亮度</span>    write_word(<span class="number">0x0b</span>, <span class="number">0x07</span>);  <span class="comment">// 扫描数码管个数</span>    write_word(<span class="number">0x0c</span>, <span class="number">0x01</span>);  <span class="comment">// 工作模式</span>&#125;<span class="function"><span class="keyword">int</span> <span class="title">Matrix_render</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">char</span>* tmp)</span></span>&#123; <span class="comment">// 点阵显示</span>    <span class="keyword">int</span> i;    <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;<span class="number">8</span>; i++)&#123;        <span class="built_in">printf</span>(<span class="string">"%d %d\n"</span>, i, tmp[i]);        write_word(i+<span class="number">1</span>, tmp[i]);    &#125;&#125;<span class="function"><span class="keyword">int</span> <span class="title">Matrix_clear</span><span class="params">()</span></span>&#123; <span class="comment">// 点阵清屏</span>    <span class="keyword">unsigned</span> <span class="keyword">char</span> SCN[]=&#123;        <span class="number">0xFF</span>, <span class="number">0x01</span>, <span class="number">0x01</span>, <span class="number">0xFF</span>, <span class="number">0xFF</span>, <span class="number">0x01</span>, <span class="number">0x01</span>, <span class="number">0xFF</span>    &#125;;    Matrix_render(SCN);&#125;<span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;    GPIO_Pin_export(&amp;din, DIN, GPIO_DIRECTION_OUT);    GPIO_Pin_export(&amp;cs, CS, GPIO_DIRECTION_OUT);    GPIO_Pin_export(&amp;clk, CLK, GPIO_DIRECTION_OUT);    Matrix_init();    Matrix_clear();    <span class="keyword">return</span> <span class="number">0</span>;&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-字符设备驱动程序"><a href="#2-字符设备驱动程序" class="headerlink" title="2. 字符设备驱动程序"></a>2. 字符设备驱动程序</h4><pre><code class="C"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/init.h&gt;</span></span>
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/kernel.h&gt;</span></span>
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/module.h&gt;</span></span>
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/moduleparam.h&gt;</span></span>
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/fs.h&gt;</span></span>
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/miscdevice.h&gt;</span></span>
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/string.h&gt;</span></span>
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/delay.h&gt;</span></span>
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/gpio.h&gt;</span></span>
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/workqueue.h&gt;</span></span>
+
+MODULE_LICENSE(<span class="string">"GPL"</span>);
+
+<span class="meta">#<span class="meta-keyword">define</span> DIN 4</span>
+<span class="meta">#<span class="meta-keyword">define</span> CS 3</span>
+<span class="meta">#<span class="meta-keyword">define</span> CLK 2</span>
+
+<span class="function"><span class="keyword">void</span> <span class="title">write_byte</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">char</span> b)</span></span>{
+    <span class="keyword">unsigned</span> <span class="keyword">char</span> i, tmp;
+    <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;<span class="number">8</span>; i++){
+        tmp = (b &amp; <span class="number">0x80</span>) &gt; <span class="number">0</span>;
+        b &lt;&lt;= <span class="number">1</span>;
+        gpio_set_value(DIN, tmp);
+        gpio_set_value(CLK, <span class="number">1</span>);
+        gpio_set_value(CLK, <span class="number">0</span>);
+    }
+}
+
+<span class="function"><span class="keyword">void</span> <span class="title">write_word</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">char</span> addr, <span class="keyword">unsigned</span> <span class="keyword">char</span> num)</span></span>{
+    gpio_set_value(CLK, <span class="number">0</span>);
+    gpio_set_value(CS, <span class="number">1</span>);
+    gpio_set_value(CS, <span class="number">0</span>);
+    write_byte(addr);
+    write_byte(num);
+    gpio_set_value(CS, <span class="number">1</span>);
+}
+
+<span class="function"><span class="keyword">void</span> <span class="title">Matrix_render</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">char</span>* tmp)</span></span>{ <span class="comment">// 点阵显示</span>
+    <span class="keyword">int</span> i;
+    <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;<span class="number">8</span>; i++){
+        write_word(i+<span class="number">1</span>, tmp[i]);
+    }
+}
+
+<span class="keyword">unsigned</span> <span class="keyword">char</span> digits[][<span class="number">8</span>]={
+    {<span class="number">0x1c</span>, <span class="number">0x22</span>, <span class="number">0x22</span>, <span class="number">0x22</span>, <span class="number">0x22</span>, <span class="number">0x22</span>, <span class="number">0x22</span>, <span class="number">0x1c</span>}, <span class="comment">// 0</span>
+    {<span class="number">0x08</span>, <span class="number">0x18</span>, <span class="number">0x08</span>, <span class="number">0x08</span>, <span class="number">0x08</span>, <span class="number">0x08</span>, <span class="number">0x08</span>, <span class="number">0x1c</span>}, <span class="comment">// 1</span>
+    {<span class="number">0x1c</span>, <span class="number">0x22</span>, <span class="number">0x22</span>, <span class="number">0x04</span>, <span class="number">0x08</span>, <span class="number">0x10</span>, <span class="number">0x20</span>, <span class="number">0x3e</span>}, <span class="comment">// 2</span>
+    {<span class="number">0x1c</span>, <span class="number">0x22</span>, <span class="number">0x02</span>, <span class="number">0x0c</span>, <span class="number">0x02</span>, <span class="number">0x02</span>, <span class="number">0x22</span>, <span class="number">0x1c</span>}, <span class="comment">// 3</span>
+    {<span class="number">0x04</span>, <span class="number">0x0c</span>, <span class="number">0x14</span>, <span class="number">0x14</span>, <span class="number">0x24</span>, <span class="number">0x1e</span>, <span class="number">0x04</span>, <span class="number">0x04</span>}, <span class="comment">// 4</span>
+    {<span class="number">0x3e</span>, <span class="number">0x20</span>, <span class="number">0x20</span>, <span class="number">0x3c</span>, <span class="number">0x02</span>, <span class="number">0x02</span>, <span class="number">0x22</span>, <span class="number">0x1c</span>}, <span class="comment">// 5</span>
+    {<span class="number">0x1c</span>, <span class="number">0x22</span>, <span class="number">0x20</span>, <span class="number">0x3c</span>, <span class="number">0x22</span>, <span class="number">0x22</span>, <span class="number">0x22</span>, <span class="number">0x1c</span>}, <span class="comment">// 6</span>
+    {<span class="number">0x3e</span>, <span class="number">0x24</span>, <span class="number">0x04</span>, <span class="number">0x08</span>, <span class="number">0x08</span>, <span class="number">0x08</span>, <span class="number">0x08</span>, <span class="number">0x08</span>}, <span class="comment">// 7</span>
+    {<span class="number">0x1c</span>, <span class="number">0x22</span>, <span class="number">0x22</span>, <span class="number">0x1c</span>, <span class="number">0x22</span>, <span class="number">0x22</span>, <span class="number">0x22</span>, <span class="number">0x1c</span>}, <span class="comment">// 8</span>
+    {<span class="number">0x1c</span>, <span class="number">0x22</span>, <span class="number">0x22</span>, <span class="number">0x22</span>, <span class="number">0x1e</span>, <span class="number">0x02</span>, <span class="number">0x22</span>, <span class="number">0x1c</span>}, <span class="comment">// 9</span>
+};
+
+<span class="keyword">unsigned</span> <span class="keyword">char</span> SCN[]={
+    <span class="number">0x99</span>, <span class="number">0x01</span>, <span class="number">0x01</span>, <span class="number">0x99</span>, <span class="number">0x99</span>, <span class="number">0x01</span>, <span class="number">0x01</span>, <span class="number">0x99</span>
+};
+
+<span class="function"><span class="keyword">void</span> <span class="title">Matrix_clear</span><span class="params">(<span class="keyword">void</span>)</span></span>{ <span class="comment">// 点阵清屏</span>
+    Matrix_render(SCN);
+}
+
+<span class="function"><span class="keyword">void</span> <span class="title">Matrix_init</span><span class="params">(<span class="keyword">void</span>)</span></span>{ <span class="comment">// 点阵初始化</span>
+    write_word(<span class="number">0x09</span>, <span class="number">0x00</span>); <span class="comment">// 编码模式</span>
+    write_word(<span class="number">0x0a</span>, <span class="number">0x03</span>); <span class="comment">// 亮度</span>
+    write_word(<span class="number">0x0b</span>, <span class="number">0x07</span>); <span class="comment">// 扫描数码管个数</span>
+    write_word(<span class="number">0x0c</span>, <span class="number">0x01</span>); <span class="comment">// 工作模式</span>
+
+    Matrix_clear();
+}
+
+<span class="meta">#<span class="meta-keyword">define</span> BUFFERSIZE 128</span>
+<span class="meta">#<span class="meta-keyword">define</span> DELAYTIME 1</span>
+<span class="keyword">unsigned</span> <span class="keyword">char</span> disp[BUFFERSIZE];
+<span class="keyword">int</span> head = <span class="number">0</span>, tail = <span class="number">0</span>;
+<span class="keyword">static</span> <span class="keyword">struct</span> timer_list timer;
+
+<span class="function"><span class="keyword">void</span> <span class="title">Matrix_next_display</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">long</span>)</span></span>;
+
+<span class="function"><span class="keyword">void</span> <span class="title">ptr_inc</span><span class="params">(<span class="keyword">int</span> *ptr)</span></span>{
+    *ptr = (*ptr + <span class="number">1</span>) % BUFFERSIZE;
+}
+
+<span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">timer_register</span><span class="params">(<span class="keyword">struct</span> timer_list* ptimer)</span></span>{
+    init_timer(ptimer);
+    ptimer-&gt;data = DELAYTIME;
+    ptimer-&gt;expires = jiffies + (DELAYTIME * HZ);
+    ptimer-&gt;function = Matrix_next_display;
+    add_timer(ptimer);
+}
+
+<span class="function"><span class="keyword">void</span> <span class="title">disp_start</span><span class="params">(<span class="keyword">void</span>)</span></span>{
+    timer_register(&amp;timer);
+}
+
+<span class="function"><span class="keyword">void</span> <span class="title">Matrix_next_display</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">long</span> data)</span></span>{
+    <span class="keyword">if</span> (head != tail){
+        <span class="keyword">unsigned</span> <span class="keyword">char</span> *ptr = SCN;
+        <span class="keyword">unsigned</span> <span class="keyword">char</span> c = disp[head];
+        <span class="keyword">if</span> (<span class="string">'0'</span> &lt;= c &amp;&amp; c &lt;= <span class="string">'9'</span>){
+            ptr = digits[c - <span class="string">'0'</span>];
+        }
+        Matrix_render(ptr);
+        ptr_inc(&amp;head);
+        disp_start();
+    }<span class="keyword">else</span>{
+        Matrix_clear();
+    }
+}
+
+<span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">matrix_write</span><span class="params">(<span class="keyword">struct</span> file *file, <span class="keyword">const</span> <span class="keyword">char</span> __user *buffer,
+        size_t count, loff_t *ppos)</span></span>{
+    <span class="keyword">int</span> i;
+    <span class="keyword">if</span> (head == tail &amp;&amp; count &gt; <span class="number">0</span>){
+        disp_start();
+    }
+    <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;count; i++){
+        ptr_inc(&amp;tail);
+        <span class="keyword">if</span> (tail == head)
+            ptr_inc(&amp;head);
+        disp[tail] = buffer[i];
+    }
+    <span class="keyword">return</span> count;
+}
+
+<span class="keyword">static</span> <span class="keyword">struct</span> file_operations matrix_fops = {
+    .owner = THIS_MODULE,
+    .write = matrix_write,
+    .llseek = noop_llseek
+};
+
+<span class="keyword">static</span> <span class="keyword">struct</span> miscdevice matrix_misc_device = {
+    .minor = MISC_DYNAMIC_MINOR,
+    .name = <span class="string">"matrix"</span>,
+    .fops = &amp;matrix_fops
+};
+
+<span class="keyword">static</span> <span class="keyword">int</span> __<span class="function">init <span class="title">matrix_init</span><span class="params">(<span class="keyword">void</span>)</span></span>{
+    <span class="keyword">if</span> (!gpio_is_valid(DIN) || !gpio_is_valid(CLK) || !gpio_is_valid(CS)){
+        printk(KERN_INFO <span class="string">"GPIO_TEST: invalid GPIO\n"</span>);
+        <span class="keyword">return</span> -ENODEV;
+    }
+    misc_register(&amp;matrix_misc_device);
+    gpio_request(DIN, <span class="string">"sysfs"</span>);
+    gpio_direction_output(DIN, <span class="number">0</span>);
+    gpio_request(CS, <span class="string">"sysfs"</span>);
+    gpio_direction_output(CS, <span class="number">1</span>);
+    gpio_request(CLK, <span class="string">"sysfs"</span>);
+    gpio_direction_output(CLK, <span class="number">0</span>);
+    Matrix_init();
+    printk(KERN_INFO<span class="string">"matrix device has been registed.\n"</span>);
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+
+<span class="keyword">static</span> <span class="keyword">void</span> __<span class="function"><span class="built_in">exit</span> <span class="title">matrix_exit</span><span class="params">(<span class="keyword">void</span>)</span></span>{
+    misc_deregister(&amp;matrix_misc_device);
+    printk(KERN_INFO<span class="string">"matrix device has been unregisted.\n"</span>);
+    del_timer(&amp;timer);
+}
+
+module_init(matrix_init);
+module_exit(matrix_exit);
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/06/13/Lab7/" data-id="cjzu3flpd00080qngi19mg17y" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Embeded-System/">Embeded System</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Lab5" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/06/13/Lab5/" class="article-date">
+  <time datetime="2016-06-13T07:44:44.000Z" itemprop="datePublished">2016-06-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/13/Lab5/">Lab5 uC/OS 室温计</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="实验连接示意图"><a href="#实验连接示意图" class="headerlink" title="实验连接示意图"></a>实验连接示意图</h2><p><img src="http://scn3.github.io/image/lab5/figure1.png" alt=""></p>
+<h2 id="所用器材列表"><a href="#所用器材列表" class="headerlink" title="所用器材列表"></a>所用器材列表</h2><h4 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h4><pre><code>- STM32F103核心板一块
+- USB串口板一块
+- 面包板一块
+- 两位7段数码管（共阳）一颗
+- 360Ω 1/8W电阻2颗
+- DHT-11温湿度传感器1个
+- 面包线若干
+</code></pre><h4 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h4><pre><code>- 编译软件
+- Fritzing
+</code></pre><h2 id="外部设备连线图"><a href="#外部设备连线图" class="headerlink" title="外部设备连线图"></a>外部设备连线图</h2><p><img src="http://scn3.github.io/image/lab5/figure2.png" alt=""></p>
+<h2 id="实验步骤、操作的命令和结果"><a href="#实验步骤、操作的命令和结果" class="headerlink" title="实验步骤、操作的命令和结果"></a>实验步骤、操作的命令和结果</h2><h4 id="1-设计输出方案，画连线示意图"><a href="#1-设计输出方案，画连线示意图" class="headerlink" title="1.设计输出方案，画连线示意图"></a>1.设计输出方案，画连线示意图</h4><h4 id="2-在面包板上连线，完成外部电路"><a href="#2-在面包板上连线，完成外部电路" class="headerlink" title="2.在面包板上连线，完成外部电路"></a>2.在面包板上连线，完成外部电路</h4><h4 id="3-编写C-C-程序，测试程序和电路"><a href="#3-编写C-C-程序，测试程序和电路" class="headerlink" title="3.编写C/C++程序，测试程序和电路"></a>3.编写C/C++程序，测试程序和电路</h4><pre><code>1) 测试、实现uC/OS对GPIO的访问
+2) 实现DHT-11数据的读
+3) 实现以时分复用方式在四位7段数码管上一次显示0000-9999的数字
+4) 用两个uC/OS任务，一个定时读DHT-11数据，一个轮询驱动数码管，一秒一次显示当前湿度和温度。注意处理好两个任务之间的数据共享
+</code></pre><h2 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h2><h4 id="7段数码管程序"><a href="#7段数码管程序" class="headerlink" title="7段数码管程序"></a>7段数码管程序</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">GPIO_Configuration</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">    GPIO_InitTypeDef GPIO_InitStructure;</span><br><span class="line"></span><br><span class="line">    RCC_DeInit();</span><br><span class="line">    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC | RCC_APB2Periph_GPIOA, ENABLE);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_13</span><br><span class="line">                                | GPIO_Pin_14;</span><br><span class="line">    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;</span><br><span class="line">    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;</span><br><span class="line">    GPIO_Init(GPIOC, &amp;GPIO_InitStructure);</span><br><span class="line"></span><br><span class="line">    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_11</span><br><span class="line">                                | GPIO_Pin_12;</span><br><span class="line">    GPIO_Init(GPIOA, &amp;GPIO_InitStructure);</span><br><span class="line"></span><br><span class="line">    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0</span><br><span class="line">                                | GPIO_Pin_1</span><br><span class="line">                                | GPIO_Pin_2</span><br><span class="line">                                | GPIO_Pin_3</span><br><span class="line">                                | GPIO_Pin_4</span><br><span class="line">                                | GPIO_Pin_5</span><br><span class="line">                                | GPIO_Pin_6</span><br><span class="line">                                | GPIO_Pin_7;</span><br><span class="line">    GPIO_Init(GPIOA, &amp;GPIO_InitStructure);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Delay_ms</span><span class="params">(<span class="keyword">int</span> times)</span></span>&#123;</span><br><span class="line">    OSTimeDly(OS_TICKS_PER_SEC / <span class="number">1000</span> * times);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">digit_select</span><span class="params">(<span class="keyword">int</span> index)</span></span>&#123;</span><br><span class="line">    <span class="comment">// 通过输出高电平选择点亮某个数字</span></span><br><span class="line">    BitAction v[<span class="number">4</span>];</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;<span class="number">4</span>; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span> (index == i)&#123;</span><br><span class="line">            v[i] = Bit_SET;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            v[i] = Bit_RESET;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    GPIO_WriteBit(GPIOA, GPIO_Pin_11, v[<span class="number">0</span>]);</span><br><span class="line">    GPIO_WriteBit(GPIOA, GPIO_Pin_12, v[<span class="number">1</span>]);</span><br><span class="line">    GPIO_WriteBit(GPIOC, GPIO_Pin_13, v[<span class="number">2</span>]);</span><br><span class="line">    GPIO_WriteBit(GPIOC, GPIO_Pin_14, v[<span class="number">3</span>]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">digit_show</span><span class="params">(<span class="keyword">int</span> dight, <span class="keyword">int</span> point)</span></span>&#123;</span><br><span class="line">    <span class="comment">// 通过对引脚输出低电平点亮数码管段</span></span><br><span class="line">    <span class="keyword">int</span> segment, i, base;</span><br><span class="line">    BitAction v[<span class="number">8</span>];</span><br><span class="line">    <span class="keyword">switch</span> (dight)&#123;</span><br><span class="line">        <span class="keyword">case</span>    <span class="number">0</span>    :    segment = <span class="number">0xee</span>; <span class="keyword">break</span>; <span class="comment">// 0b11101110  0 -&gt; 7</span></span><br><span class="line">        <span class="keyword">case</span>    <span class="number">1</span>    :    segment = <span class="number">0x24</span>; <span class="keyword">break</span>; <span class="comment">// 0b00100100</span></span><br><span class="line">        <span class="keyword">case</span>    <span class="number">2</span>    :    segment = <span class="number">0xba</span>; <span class="keyword">break</span>; <span class="comment">// 0b10111010</span></span><br><span class="line">        <span class="keyword">case</span>    <span class="number">3</span>    :    segment = <span class="number">0xb6</span>; <span class="keyword">break</span>; <span class="comment">// 0b10110110</span></span><br><span class="line">        <span class="keyword">case</span>    <span class="number">4</span>    :    segment = <span class="number">0x74</span>; <span class="keyword">break</span>; <span class="comment">// 0b01110100</span></span><br><span class="line">        <span class="keyword">case</span>    <span class="number">5</span>    :    segment = <span class="number">0xd6</span>; <span class="keyword">break</span>; <span class="comment">// 0b11010110</span></span><br><span class="line">        <span class="keyword">case</span>    <span class="number">6</span>    :    segment = <span class="number">0xde</span>; <span class="keyword">break</span>; <span class="comment">// 0b11011110</span></span><br><span class="line">        <span class="keyword">case</span>    <span class="number">7</span>    :    segment = <span class="number">0xa4</span>; <span class="keyword">break</span>; <span class="comment">// 0b10100100</span></span><br><span class="line">        <span class="keyword">case</span>    <span class="number">8</span>    :    segment = <span class="number">0xfe</span>; <span class="keyword">break</span>; <span class="comment">// 0b11111110</span></span><br><span class="line">        <span class="keyword">case</span>    <span class="number">9</span>    :    segment = <span class="number">0xf6</span>; <span class="keyword">break</span>; <span class="comment">// 0b11110110</span></span><br><span class="line">        <span class="keyword">default</span>        :    segment = <span class="number">0xda</span>; <span class="keyword">break</span>; <span class="comment">// 0b11011010 error state</span></span><br><span class="line">    &#125;</span><br><span class="line">    segment |= point != <span class="number">0</span>; <span class="comment">// 小数点为最低位</span></span><br><span class="line">    base = <span class="number">1</span> &lt;&lt; <span class="number">8</span>;</span><br><span class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;<span class="number">8</span>; i++)&#123;</span><br><span class="line">        base &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">        <span class="comment">// segment中某位的1表示点亮，而输出低电平为点亮</span></span><br><span class="line">        <span class="keyword">if</span> ((segment &amp; base )== <span class="number">0</span>)&#123;</span><br><span class="line">            v[i] = Bit_SET;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            v[i] = Bit_RESET;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    GPIO_WriteBit(GPIOA, GPIO_Pin_0, v[<span class="number">0</span>]);</span><br><span class="line">    GPIO_WriteBit(GPIOA, GPIO_Pin_1, v[<span class="number">1</span>]);</span><br><span class="line">    GPIO_WriteBit(GPIOA, GPIO_Pin_2, v[<span class="number">2</span>]);</span><br><span class="line">    GPIO_WriteBit(GPIOA, GPIO_Pin_3, v[<span class="number">3</span>]);</span><br><span class="line">    GPIO_WriteBit(GPIOA, GPIO_Pin_4, v[<span class="number">4</span>]);</span><br><span class="line">    GPIO_WriteBit(GPIOA, GPIO_Pin_5, v[<span class="number">5</span>]);</span><br><span class="line">    GPIO_WriteBit(GPIOA, GPIO_Pin_6, v[<span class="number">6</span>]);</span><br><span class="line">    GPIO_WriteBit(GPIOA, GPIO_Pin_7, v[<span class="number">7</span>]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">led_show</span><span class="params">(<span class="keyword">int</span> digit)</span></span>&#123;</span><br><span class="line">    <span class="comment">// 时分复用的方式输出数字，每次调用led_show只输出一位数字</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> index = <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">int</span> base = <span class="number">1000</span>;</span><br><span class="line">    index = (index + <span class="number">1</span>) % <span class="number">4</span>;</span><br><span class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;index; i++)&#123;</span><br><span class="line">        base /= <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    digit = (digit / base) % <span class="number">10</span>;</span><br><span class="line">    digit_select(index);</span><br><span class="line">    digit_show(digit, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> ledValue = <span class="number">0</span>; <span class="comment">// 这个值由task0写入，task1读取，都是单向的，所以可以不考虑线程之间的冲突</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">LED0_task</span><span class="params">(<span class="keyword">void</span>* pdata)</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>)&#123;</span><br><span class="line">        ledValue++;</span><br><span class="line">        Delay_ms(<span class="number">200</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">LED1_task</span><span class="params">(<span class="keyword">void</span>* pdata)</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">        led_show(ledValue);</span><br><span class="line">        Delay_ms(<span class="number">7</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="DHT11数据读取及显示"><a href="#DHT11数据读取及显示" class="headerlink" title="DHT11数据读取及显示"></a>DHT11数据读取及显示</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX_TICS 100000</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> DHT11_OK 0</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> DHT11_NO_CONN 1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> DHT11_CS_ERROR 2</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> DHT11_PORT GPIOB</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> DHT11_PIN GPIO_Pin_0</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Delay_us</span><span class="params">(<span class="keyword">int</span> times)</span></span>&#123;</span><br><span class="line">    <span class="comment">// 我自己测大约这个delay函数需要的时间是1.4us * @times</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;times; i++)&#123;</span><br><span class="line">        <span class="comment">// 外层循环一次差不多1us，不过不是特别精确，所以不需要内层的循环了</span></span><br><span class="line">        <span class="comment">/*</span><br><span class="line">        unsigned int j;</span><br><span class="line">        for (j=0; j&lt;0x3fff; j++)&#123;</span><br><span class="line">        &#125;</span><br><span class="line">        */</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ErrorState</span><span class="params">(<span class="keyword">int</span> state)</span></span>&#123;</span><br><span class="line">    <span class="comment">// 使用死循环自杀，并显示错误码</span></span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>)&#123;</span><br><span class="line">        led_show(state);</span><br><span class="line">        Delay_us(<span class="number">4000</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DHT11_Set</span><span class="params">(<span class="keyword">int</span> state)</span></span>&#123;</span><br><span class="line">    <span class="comment">// 设置DHT11 GPIO口的值</span></span><br><span class="line">    BitAction s;</span><br><span class="line">    <span class="keyword">if</span> (state)&#123;</span><br><span class="line">        s = Bit_SET;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        s = Bit_RESET;</span><br><span class="line">    &#125;</span><br><span class="line">    GPIO_WriteBit(DHT11_PORT, DHT11_PIN, s);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DHT11_Pin_OUT</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">// 调整DHT11 GPIO口为输出模式</span></span><br><span class="line">    GPIO_InitTypeDef GPIO_InitStructure;</span><br><span class="line"></span><br><span class="line">    GPIO_InitStructure.GPIO_Pin = DHT11_PIN;</span><br><span class="line">    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;</span><br><span class="line">    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;</span><br><span class="line">    GPIO_Init(DHT11_PORT, &amp;GPIO_InitStructure);</span><br><span class="line"></span><br><span class="line">    DHT11_Set(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DHT11_Pin_IN</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">// 调整DHT11_GPIO口为输入模式</span></span><br><span class="line">    GPIO_InitTypeDef GPIO_InitStructure;</span><br><span class="line"></span><br><span class="line">    GPIO_InitStructure.GPIO_Pin = DHT11_PIN;</span><br><span class="line">    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;</span><br><span class="line">    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;</span><br><span class="line">    GPIO_Init(DHT11_PORT, &amp;GPIO_InitStructure);</span><br><span class="line"></span><br><span class="line">    DHT11_Set(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">uint8_t</span> DHT11_Check()&#123;</span><br><span class="line">    <span class="comment">// 获取DHT11 GPIO口的数据，下方算式与调用函数等价</span></span><br><span class="line">    <span class="keyword">return</span> (DHT11_PORT-&gt;IDR &amp; DHT11_PIN)&gt; <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//return GPIO_ReadInputDataBit(DHT11_PORT, DHT11_PIN);</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DHT11_Wait</span><span class="params">(<span class="keyword">int</span> state, <span class="keyword">int</span> place)</span></span>&#123;</span><br><span class="line">    <span class="comment">// 等待GPIO口变为state的值，超时自动自杀</span></span><br><span class="line">    <span class="keyword">int</span> loopCnt = MAX_TICS;</span><br><span class="line">    <span class="keyword">while</span> (DHT11_Check() != state)&#123;</span><br><span class="line">        <span class="keyword">if</span> (loopCnt -- == <span class="number">0</span>)&#123;</span><br><span class="line">            ErrorState(<span class="number">1000</span> + state * <span class="number">1000</span> + place);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DHT11_Rst</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">// stm32端输出握手信号</span></span><br><span class="line">    DHT11_Pin_OUT();</span><br><span class="line">    DHT11_Set(<span class="number">0</span>);</span><br><span class="line">    Delay_us(<span class="number">25000</span>);</span><br><span class="line">    DHT11_Set(<span class="number">1</span>);</span><br><span class="line">    Delay_us(<span class="number">40</span>);</span><br><span class="line">    DHT11_Set(<span class="number">0</span>);</span><br><span class="line">    <span class="comment">// 转为接收模式准备读入DHT11的握手信号</span></span><br><span class="line">    DHT11_Pin_IN();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> val = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">uint8_t</span> DHT11_Read_Byte()&#123;</span><br><span class="line">    <span class="comment">// 读入一个Byte</span></span><br><span class="line">    <span class="keyword">int</span> i, cnt;</span><br><span class="line">    <span class="keyword">uint8_t</span> data = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;<span class="number">8</span>; i++)&#123;</span><br><span class="line">        cnt = <span class="number">0</span>;</span><br><span class="line">        data &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">        <span class="comment">// 当前为低电平，等待高电平</span></span><br><span class="line">        DHT11_Wait(<span class="number">1</span>, ++val);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 计算高电平持续的时间</span></span><br><span class="line">        <span class="keyword">while</span> (DHT11_Check() &gt; <span class="number">0</span>)&#123;</span><br><span class="line">            Delay_us(<span class="number">1</span>);</span><br><span class="line">            cnt++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 持续的足够久则为bit 1</span></span><br><span class="line">        data |= cnt &gt; <span class="number">5</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> data;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">uint8_t</span> DHT11_Read_Data(<span class="keyword">uint8_t</span> *buf)&#123;</span><br><span class="line">    <span class="comment">// 从DHT11内读取数据的函数</span></span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> cpu_sr;</span><br><span class="line">    <span class="comment">// 为了关闭中断进入临界区</span></span><br><span class="line">    OS_ENTER_CRITICAL();</span><br><span class="line">    val = <span class="number">10</span>;</span><br><span class="line">    <span class="comment">// 发送握手消息</span></span><br><span class="line">    DHT11_Rst();</span><br><span class="line">    <span class="comment">// 如果给予了回复</span></span><br><span class="line">    <span class="keyword">if</span> (DHT11_Check() == <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="comment">// 等待低电平过去</span></span><br><span class="line">        DHT11_Wait(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">        <span class="comment">// 等待高电平过去</span></span><br><span class="line">        DHT11_Wait(<span class="number">0</span>, <span class="number">3</span>);</span><br><span class="line">        <span class="comment">// 握手完成，开始读取40个bit</span></span><br><span class="line">        <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;<span class="number">5</span>; i++)&#123;</span><br><span class="line">            buf[i] = DHT11_Read_Byte();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 重新将GPIO口置为输出模式</span></span><br><span class="line">        DHT11_Pin_OUT();</span><br><span class="line">        OS_EXIT_CRITICAL(); </span><br><span class="line"></span><br><span class="line">        <span class="comment">// 判断校验和是否满足要求</span></span><br><span class="line">        <span class="keyword">if</span> (buf[<span class="number">0</span>] + buf[<span class="number">1</span>] + buf[<span class="number">2</span>] + buf[<span class="number">3</span>] == buf[<span class="number">4</span>])&#123;</span><br><span class="line">            <span class="keyword">return</span> DHT11_OK;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> DHT11_CS_ERROR;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="comment">// 该分支表示没有收到回复</span></span><br><span class="line">        OS_EXIT_CRITICAL(); </span><br><span class="line">        <span class="keyword">return</span> DHT11_NO_CONN;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">uint8_t</span> DHT11_Humidity(<span class="keyword">uint8_t</span> *buf)&#123;</span><br><span class="line">    <span class="comment">// 返回湿度</span></span><br><span class="line">    <span class="keyword">return</span> buf[<span class="number">0</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">uint8_t</span> DHT11_Temperature(<span class="keyword">uint8_t</span> *buf)&#123;</span><br><span class="line">    <span class="comment">// 返回温度</span></span><br><span class="line">    <span class="keyword">return</span> buf[<span class="number">2</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/06/13/Lab5/" data-id="cjzu3flpx000f0qng9ayyyr2a" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Embeded-System/">Embeded System</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Lab6" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/06/13/Lab6/" class="article-date">
+  <time datetime="2016-06-13T07:36:35.000Z" itemprop="datePublished">2016-06-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/13/Lab6/">Lab6 Linux系统调用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="实验连接示意图"><a href="#实验连接示意图" class="headerlink" title="实验连接示意图"></a>实验连接示意图</h2><p><img src="http://scn3.github.io/image/lab6/figure1.png" alt=""></p>
+<h2 id="所用器材列表"><a href="#所用器材列表" class="headerlink" title="所用器材列表"></a>所用器材列表</h2><h4 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h4><pre><code>- Raspberry Pi2板一块
+- 5V/1A电源一个
+- microUSB线一根
+- PC一台
+</code></pre><h4 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h4><pre><code>- 内核源码
+</code></pre><h2 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h2><h4 id="1-寻找、下载Linux实验版本所用的Linux内核源码"><a href="#1-寻找、下载Linux实验版本所用的Linux内核源码" class="headerlink" title="1. 寻找、下载Linux实验版本所用的Linux内核源码"></a>1. 寻找、下载Linux实验版本所用的Linux内核源码</h4><p><img src="http://scn3.github.io/image/lab6/figure2.png" alt=""></p>
+<h4 id="2-在内核中加入新的系统调用，输出调试信息"><a href="#2-在内核中加入新的系统调用，输出调试信息" class="headerlink" title="2. 在内核中加入新的系统调用，输出调试信息"></a>2. 在内核中加入新的系统调用，输出调试信息</h4><pre><code>a) 在arch/arm/kernel下新建一个sys_mysyscall.c文件，内容如下
+</code></pre><p><img src="http://scn3.github.io/image/lab6/figure3.png" alt=""></p>
+<pre><code>b) 修改Makefile，增加sys_mysyscall.o到obj-y末尾
+</code></pre><p><img src="http://scn3.github.io/image/lab6/figure4.png" alt=""></p>
+<pre><code>c) 修改arch/arm/kernel/call.S中的223号调用
+</code></pre><p><img src="http://scn3.github.io/image/lab6/figure5.png" alt=""></p>
+<pre><code>d) 修改include/uapi/asm-generic/unistd.h中的223号调用
+</code></pre><p><img src="http://scn3.github.io/image/lab6/figure6.png" alt=""></p>
+<h4 id="3-修改内核代码配置，编译内核"><a href="#3-修改内核代码配置，编译内核" class="headerlink" title="3. 修改内核代码配置，编译内核"></a>3. 修改内核代码配置，编译内核</h4><pre><code>a) 输入配置命令
+KERNEL=kernel7
+make ARCH =arm CROSS_COMPILE=arm-linux-gnueabihf- bcm2709_defconfig
+b) 输入编译命令
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage modules dtbs -j4
+</code></pre><h4 id="4-将编译好的内核装载到板卡启动"><a href="#4-将编译好的内核装载到板卡启动" class="headerlink" title="4. 将编译好的内核装载到板卡启动"></a>4. 将编译好的内核装载到板卡启动</h4><p><img src="http://scn3.github.io/image/lab6/figure7.png" alt=""><br><br><br><img src="http://scn3.github.io/image/lab6/figure8.png" alt=""></p>
+<h4 id="5-编写C代码，用两种方法做系统调用，测试"><a href="#5-编写C代码，用两种方法做系统调用，测试" class="headerlink" title="5. 编写C代码，用两种方法做系统调用，测试"></a>5. 编写C代码，用两种方法做系统调用，测试</h4><ol>
+<li>嵌入汇编代码<br><img src="http://scn3.github.io/image/lab6/figure9.png" alt=""></li>
+<li>用syscall()函数<br><img src="http://scn3.github.io/image/lab6/figure10.png" alt=""><br> <br>编译并运行后执行dmesg | tail -5<br><img src="http://scn3.github.io/image/lab6/figure11.png" alt=""></li>
+</ol>
+<h4 id="6-编写内核模块，在模块加载和卸载时能通过内核打印函数输出提示信息"><a href="#6-编写内核模块，在模块加载和卸载时能通过内核打印函数输出提示信息" class="headerlink" title="6. 编写内核模块，在模块加载和卸载时能通过内核打印函数输出提示信息"></a>6. 编写内核模块，在模块加载和卸载时能通过内核打印函数输出提示信息</h4><p>内核模块：<br><img src="http://scn3.github.io/image/lab6/figure12.png" alt=""></p>
+<h4 id="7-通过insmod和lsmod等命令测试内核模块"><a href="#7-通过insmod和lsmod等命令测试内核模块" class="headerlink" title="7. 通过insmod和lsmod等命令测试内核模块"></a>7. 通过insmod和lsmod等命令测试内核模块</h4><h2 id="系统调用代码和修改内核的地方"><a href="#系统调用代码和修改内核的地方" class="headerlink" title="系统调用代码和修改内核的地方"></a>系统调用代码和修改内核的地方</h2><h4 id="1-系统调用代码"><a href="#1-系统调用代码" class="headerlink" title="1. 系统调用代码"></a>1. 系统调用代码</h4><p><img src="http://scn3.github.io/image/lab6/figure13.png" alt=""></p>
+<h4 id="2-内核修改"><a href="#2-内核修改" class="headerlink" title="2. 内核修改"></a>2. 内核修改</h4><ol>
+<li>arch/arm/kernel/call.S<br><img src="http://scn3.github.io/image/lab6/figure14.png" alt=""></li>
+<li>include/uapi/asm-generic/unistd.h<br><img src="http://scn3.github.io/image/lab6/figure15.png" alt=""></li>
+</ol>
+<h2 id="测试用的代码和结果"><a href="#测试用的代码和结果" class="headerlink" title="测试用的代码和结果"></a>测试用的代码和结果</h2><h4 id="1-测试系统调用的用户代码"><a href="#1-测试系统调用的用户代码" class="headerlink" title="1. 测试系统调用的用户代码"></a>1. 测试系统调用的用户代码</h4><p><img src="http://scn3.github.io/image/lab6/figure16.png" alt=""><br><img src="http://scn3.github.io/image/lab6/figure17.png" alt=""></p>
+<h4 id="2-测试内核模块：使用lsmod和dmesg-tail-5命令"><a href="#2-测试内核模块：使用lsmod和dmesg-tail-5命令" class="headerlink" title="2. 测试内核模块：使用lsmod和dmesg | tail -5命令"></a>2. 测试内核模块：使用lsmod和dmesg | tail -5命令</h4><p><img src="http://scn3.github.io/image/lab6/figure18.png" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/06/13/Lab6/" data-id="cjzu3flpa00040qngxy045x0r" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Embeded-System/">Embeded System</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Lab4" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/06/13/Lab4/" class="article-date">
+  <time datetime="2016-06-13T07:25:06.000Z" itemprop="datePublished">2016-06-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/13/Lab4/">Lab4 bootloader</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="实验连接示意图"><a href="#实验连接示意图" class="headerlink" title="实验连接示意图"></a>实验连接示意图</h2><p><img src="http://scn3.github.io/image/lab4/figure1.png" alt=""></p>
+<h2 id="所用器材列表"><a href="#所用器材列表" class="headerlink" title="所用器材列表"></a>所用器材列表</h2><h4 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h4><pre><code>- STM32F103核心板一块
+- microUSB线
+- STLinkban板和USB串口板
+</code></pre><h4 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h4><pre><code>- 交叉编译软件
+</code></pre><h2 id="实验步骤、操作的命令和结果"><a href="#实验步骤、操作的命令和结果" class="headerlink" title="实验步骤、操作的命令和结果"></a>实验步骤、操作的命令和结果</h2><h4 id="连接STM32和其他设备"><a href="#连接STM32和其他设备" class="headerlink" title="连接STM32和其他设备"></a>连接STM32和其他设备</h4><h4 id="写一个自己的建议bootloader，能通过串口执行两条最简单的指令"><a href="#写一个自己的建议bootloader，能通过串口执行两条最简单的指令" class="headerlink" title="写一个自己的建议bootloader，能通过串口执行两条最简单的指令:"></a>写一个自己的建议bootloader，能通过串口执行两条最简单的指令:</h4><ol>
+<li>peek addr以一个字为单位读取内存中addr位置的数据，并以十六进制的形式输出</li>
+<li>poke addr data以一个字为单位修改内存中addr位置的数据为data<h2 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h2><h4 id="输入输出接口"><a href="#输入输出接口" class="headerlink" title="输入输出接口"></a>输入输出接口</h4></li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 串口输出单个字符</span><span class="function"><span class="keyword">void</span> <span class="title">myPutc</span><span class="params">(<span class="keyword">char</span> ch)</span> </span>&#123;    HAL_UART_Transmit(&amp;huart1,(<span class="keyword">uint8_t</span>*)&amp;ch,<span class="number">1</span>,<span class="number">100</span>);&#125;<span class="comment">// 串口输出字符串</span><span class="function"><span class="keyword">void</span> <span class="title">myPuts</span><span class="params">(<span class="keyword">char</span> *str)</span> </span>&#123;<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="built_in">strlen</span>(str); i++)  myPutc(str[i]);&#125;<span class="comment">// 串口读取单个字符（时限time_bound）</span><span class="keyword">int8_t</span> myGetc(<span class="keyword">uint8_t</span> *c, <span class="keyword">uint16_t</span> time_bound) &#123;<span class="keyword">while</span> (time_bound) &#123;  <span class="comment">// 时限控制</span>  <span class="keyword">if</span> (uart_rev.front != uart_rev.rear) &#123;*c = *uart_rev.front;uart_rev.front++;<span class="keyword">if</span> (uart_rev.front &gt;= buf + BUFSIZE)  <span class="comment">// 下标控制</span>  uart_rev.front = buf;<span class="keyword">return</span> <span class="number">0</span>;  &#125;  time_bound--;&#125;<span class="keyword">return</span> (<span class="keyword">int8_t</span>) – <span class="number">1</span>;&#125;<span class="comment">// 串口读取字符串</span><span class="keyword">int8_t</span> myGets(<span class="keyword">uint8_t</span> *str, <span class="keyword">uint16_t</span> bound) &#123;<span class="keyword">int</span> count = <span class="number">0</span>;bound--;<span class="keyword">while</span> (count &lt; bound) &#123;  <span class="keyword">if</span> (uart_rev.front != uart_rev.rear) &#123;    <span class="keyword">char</span> ch = *uart_rev.front;    uart_rev.front++;    <span class="keyword">if</span> (uart_rev.front &gt; buf + BUFSIZE)      uart_rev.front = buf;    <span class="keyword">if</span> (ch == <span class="string">'\r'</span>)  <span class="comment">// 处理换行</span>      <span class="keyword">break</span>;      *str = ch;    <span class="keyword">if</span> (ch != <span class="string">' '</span>) &#123;  <span class="comment">// 非空有效</span>      str++;      count++;    &#125;  &#125;&#125;*str = <span class="string">'\0'</span>;<span class="keyword">return</span> count;&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="中断处理"><a href="#中断处理" class="headerlink" title="中断处理"></a>中断处理</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">HAL_UART_RxCpltCallback</span><span class="params">(UART_HandleTypeDef  *UartHandle)</span> </span>&#123;  <span class="keyword">uint8_t</span> ret = HAL_OK;    <span class="keyword">char</span> ch = *uart_rev.rear;    myPutc(ch);    <span class="keyword">if</span> (c == <span class="string">'\r'</span>)  <span class="comment">// 回车补’\n’</span>        myPutc(<span class="string">'\n'</span>);        <span class="comment">// 移动buf指针</span>    uart_rev.rear++;    <span class="keyword">if</span> (uart_rev.rear &gt; buf + BUFSIZE)      uart_rev.rear = buf;    <span class="keyword">if</span> (uart_rev.rear == uart_rev.front) &#123;        uart_rev.front++;    	 <span class="keyword">if</span> (uart_rev.front &gt; buf + BUFSIZE)     		uart_rev.front = buf;    &#125;    <span class="keyword">do</span>&#123;         &#125;<span class="keyword">while</span>(HAL_UART_Receive_IT(UartHandle, uart_rev.rear, <span class="number">1</span>) != HAL_OK);&#125;         <span class="function"><span class="keyword">void</span> <span class="title">USART1_IRQHandler</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;    <span class="comment">//调用HAL函数库自带的处理函数</span>    HAL_UART_IRQHandler(&amp;huart1);&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="命令处理"><a href="#命令处理" class="headerlink" title="命令处理"></a>命令处理</h4><pre><code class="C"><span class="keyword">while</span> (<span class="number">1</span>) {
+  <span class="keyword">char</span> cmd[MAXLEN];
+  <span class="keyword">char</span> s2[MAXLEN];
+  count = <span class="number">0</span>;
+  myPuts(<span class="string">"Please input your instruction: "</span>);
+  count = myGets((<span class="keyword">uint8_t</span>*)s1, MAXLEN); <span class="comment">// 获取输入</span>
+  <span class="built_in">sscanf</span>(s1, <span class="string">"%s"</span>, cmd);
+  <span class="keyword">if</span> (<span class="built_in">strcmp</span>(cmd, <span class="string">"peek"</span>) == <span class="number">0</span>) { <span class="comment">// “peek”命令</span>
+<span class="keyword">int</span> addr;
+<span class="keyword">int</span> res = <span class="built_in">sscanf</span>(s1 + PEEKLEN, “%x %s”, &amp;addr, s2);
+<span class="keyword">if</span> (res == <span class="number">1</span>) {
+  <span class="built_in">sprintf</span>(s2, <span class="string">"peek: %x %x\r\n, addr, *((int *)addr)"</span>);
+  myPuts(s2);  <span class="comment">// 输出结果</span>
+}
+<span class="keyword">else</span> myPuts(<span class="string">"error\r\n"</span>);
+  }
+  <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">strcmp</span>(cmd, <span class="string">"poke"</span>) == <span class="number">0</span>) {
+<span class="keyword">int</span> addr, data;
+<span class="keyword">int</span> res = <span class="built_in">sscanf</span>(str + POKELEN, <span class="string">"%x %x %s"</span>, &amp;addr, &amp;data, s);  
+<span class="keyword">if</span> (res == <span class="number">2</span>) {
+  *((<span class="keyword">int</span> *)addr) = data; <span class="comment">// 写入数据</span>
+  <span class="built_in">sprintf</span>(s2, <span class="string">"poke: %x %x\r\n"</span>, addr, *((<span class="keyword">int</span> *)addr));
+  myPuts(s2); 
+}
+<span class="keyword">else</span> myPuts(<span class="string">"error\r\n"</span>);  <span class="comment">// 出错</span>
+  }
+           <span class="keyword">else</span> myPuts(<span class="string">"error\r\n"</span>);   <span class="comment">// 非peek或poke命令</span>
+}
+</code></pre>
+<h2 id="结果与分析"><a href="#结果与分析" class="headerlink" title="结果与分析"></a>结果与分析</h2><p> poke命令执行完之后，peek对应地址能得到正确的数据，符合实验预期。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/06/13/Lab4/" data-id="cjzu3flp500010qngel1faegb" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Embeded-System/">Embeded System</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Lab3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/06/12/Lab3/" class="article-date">
+  <time datetime="2016-06-13T06:58:57.000Z" itemprop="datePublished">2016-06-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/12/Lab3/">Lab3 自行车码表</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="实验连接示意图"><a href="#实验连接示意图" class="headerlink" title="实验连接示意图"></a>实验连接示意图</h2><h4 id="整体图"><a href="#整体图" class="headerlink" title="整体图"></a>整体图<img src="http://scn3.github.io/image/lab3/figure1.png" alt=""></h4><h4 id="STM32和USB连接图"><a href="#STM32和USB连接图" class="headerlink" title="STM32和USB连接图"></a>STM32和USB连接图<img src="http://scn3.github.io/image/lab3/figure2.png" alt=""></h4><h4 id="STM32和STLink连接图"><a href="#STM32和STLink连接图" class="headerlink" title="STM32和STLink连接图"></a>STM32和STLink连接图<img src="http://scn3.github.io/image/lab3/figure3.png" alt=""></h4><h4 id="面包板"><a href="#面包板" class="headerlink" title="面包板"></a>面包板<img src="http://scn3.github.io/image/lab3/figure4.png" alt=""></h4><h2 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h2><ol>
+<li>连接STM32和其他设备，并下载安装mdk等所需软件。</li>
+<li>编写Cube程序，配置UART0为9600，8n1，上电后向串口输出“Hello”，在PC上通过串口软件观察结果。结果如下：<br><img src="http://scn3.github.io/image/lab3/figure5.png" alt=""></li>
+<li>编写Cube程序，配置PA11和PA12为内部上拉到输入模式，在main()函数循环检测PA11按钮按下，并在按钮按下时在串口输出“Pressed”。结果如下：<br><img src="http://scn3.github.io/image/lab3/figure6.png" alt=""></li>
+<li>编写Cube程序，配置PA12下降沿触发中断，程序中设置两个全局变量，一个为计数器，一个为标识。当中断触发时，计数器加1，并设置标识。在主循环中判断标识，如果标识置位则清除标识并通过串口输出计数值。结果如下，当PA12按下时，count加1并显示。<br><img src="http://scn3.github.io/image/lab3/figure7.png" alt=""></li>
+<li>编写Cube程序，开启定时器为200ms中断一次，中断触发时设置标识，主循环根据这个标识在做串口输出（取消4的串口输出）。结果如下，定时输出count。<br><img src="http://scn3.github.io/image/lab3/figure8.png" alt=""></li>
+<li>编写完成的码表程序，PA12的按钮标识车轮转了一圈，通过计数器可以得到里程，通过定时器中断得到的时间可以计算出速度；PA11的按钮切换模式，模式一在串口输出里程，模式二在串口输出速度。具体显示结果见“四、结果与分析”<h2 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h2><h4 id="main-c"><a href="#main-c" class="headerlink" title="main.c"></a>main.c</h4></li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span><span class="meta">#<span class="meta-keyword">include</span> <span class="string">"stm32f1xx_hal.h"</span></span><span class="meta">#<span class="meta-keyword">include</span> <span class="string">"stm32f1xx_hal_uart.h"</span></span><span class="meta">#<span class="meta-keyword">include</span> <span class="string">"stm32f1xx_hal_tim.h"</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SystemClock_Config</span><span class="params">(<span class="keyword">void</span>)</span></span>;<span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Error_Handler</span><span class="params">(<span class="keyword">void</span>)</span></span>;<span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">MX_GPIO_Init</span><span class="params">(<span class="keyword">void</span>)</span></span>;<span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">MX_TIM3_Init</span><span class="params">(<span class="keyword">void</span>)</span></span>;UART_HandleTypeDef UartHandler;TIM_HandleTypeDef TIM_Handler;<span class="keyword">int</span> pa12_interrupt_flag;<span class="keyword">int</span> timer_flag;<span class="keyword">int</span> counter=<span class="number">0</span>;<span class="keyword">int</span> timer_counter=<span class="number">0</span>;<span class="keyword">int</span> mode=<span class="number">0</span>;<span class="keyword">int</span> state1;<span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;  HAL_Init();    <span class="comment">// 设置时钟</span>  SystemClock_Config();  <span class="comment">// 初始化</span>  MX_TIM3_Init();  MX_GPIO_Init();    HAL_TIM_Base_Start_IT(&amp;TIM_Handler);	<span class="comment">// 配置UART1</span>  UartHandler.Instance        = USART1;  UartHandler.Init.BaudRate   = <span class="number">9600</span>;  UartHandler.Init.WordLength = UART_WORDLENGTH_8B;  UartHandler.Init.StopBits   = UART_STOPBITS_1;  UartHandler.Init.Parity     = UART_PARITY_NONE;  UartHandler.Init.HwFlowCtl  = UART_HWCONTROL_NONE;  UartHandler.Init.Mode       = UART_MODE_TX_RX;  <span class="comment">// 初始化UART</span>	HAL_UART_Init(&amp;UartHandler);		HAL_Delay(<span class="number">100</span>);  <span class="built_in">printf</span>(<span class="string">"Hello\r\n"</span>);  <span class="comment">// 开机输出hello</span>  <span class="keyword">int</span> flag = <span class="number">0</span>;  	HAL_SuspendTick();		<span class="keyword">while</span> (<span class="number">1</span>) &#123;   <span class="comment">// 轮询PA11</span>		state1 = HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_11);		<span class="keyword">if</span>(state1==<span class="number">0</span>) <span class="comment">// 按下PA11切换模式</span>			mode = ~mode;		&#125;&#125;<span class="keyword">int</span> __io_putchar(<span class="keyword">uint8_t</span> ch)&#123;  <span class="comment">// 输出字符</span>	HAL_UART_Transmit(&amp;UartHandler, &amp;ch, <span class="number">1</span>, <span class="number">100</span>);	<span class="keyword">return</span> <span class="number">1</span>;&#125;<span class="function"><span class="keyword">int</span> <span class="title">fputc</span><span class="params">(<span class="keyword">int</span> ch, FILE *f)</span></span>&#123;	<span class="keyword">uint8_t</span> chr =ch;	HAL_UART_Transmit(&amp;UartHandler, &amp;chr, <span class="number">1</span>, <span class="number">100</span>);	<span class="keyword">return</span> <span class="number">1</span>;&#125;<span class="function"><span class="keyword">void</span> <span class="title">HAL_TIM_PeriodElapsedCallback</span><span class="params">(TIM_HandleTypeDef *htim)</span></span>&#123;  <span class="comment">// 回调函数</span>    <span class="keyword">if</span>(htim-&gt;Instance == TIM3)&#123;                timer_flag = <span class="number">1</span>;        timer_counter++;    &#125;		<span class="keyword">if</span> (mode)  <span class="comment">// 模式一</span>			<span class="built_in">printf</span>(<span class="string">"speed=%lf\r\n"</span>, counter*<span class="number">1.0</span>/timer_counter);		<span class="keyword">else</span>   <span class="comment">// 模式二</span>			<span class="built_in">printf</span>(<span class="string">"distance=%d\r\n"</span>, counter);&#125;<span class="function"><span class="keyword">void</span> <span class="title">HAL_GPIO_EXTI_Callback</span><span class="params">(uint16_t GPIO_Pin)</span></span>&#123;	<span class="keyword">switch</span> (GPIO_Pin)&#123;		<span class="keyword">case</span> GPIO_PIN_11:			<span class="built_in">printf</span>(<span class="string">"Pressed\r\n"</span>);			mode=!mode;			<span class="keyword">break</span>;		<span class="keyword">case</span> GPIO_PIN_12:			counter++;			<span class="keyword">break</span>;	&#125;&#125;<span class="comment">/** System Clock Configuration*/</span><span class="function"><span class="keyword">void</span> <span class="title">SystemClock_Config</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;  RCC_OscInitTypeDef RCC_OscInitStruct;  RCC_ClkInitTypeDef RCC_ClkInitStruct;  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;  RCC_OscInitStruct.HSIState = RCC_HSI_ON;  RCC_OscInitStruct.HSICalibrationValue = <span class="number">16</span>;  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_NONE;  HAL_RCC_OscConfig(&amp;RCC_OscInitStruct);  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_SYSCLK;  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_HSI;  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;  HAL_RCC_ClockConfig(&amp;RCC_ClkInitStruct, FLASH_LATENCY_0);  HAL_SYSTICK_Config(HAL_RCC_GetHCLKFreq()/<span class="number">1000</span>);  HAL_SYSTICK_CLKSourceConfig(SYSTICK_CLKSOURCE_HCLK);&#125;<span class="comment">// 时钟初始化</span><span class="function"><span class="keyword">void</span> <span class="title">MX_TIM3_Init</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;  TIM_ClockConfigTypeDef sClockSourceConfig;  TIM_MasterConfigTypeDef sMasterConfig;  TIM_Handler.Instance = TIM3;  TIM_Handler.Init.Prescaler = <span class="number">8000</span>;  TIM_Handler.Init.CounterMode = TIM_COUNTERMODE_UP;  TIM_Handler.Init.Period = <span class="number">199</span>;  TIM_Handler.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;  HAL_TIM_Base_Init(&amp;TIM_Handler);  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;  HAL_TIM_ConfigClockSource(&amp;TIM_Handler, &amp;sClockSourceConfig);  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;  HAL_TIMEx_MasterConfigSynchronization(&amp;TIM_Handler, &amp;sMasterConfig);&#125;<span class="comment">// GPIO初始化</span><span class="function"><span class="keyword">void</span> <span class="title">MX_GPIO_Init</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;  GPIO_InitTypeDef GPIO_InitStruct;	  __GPIOA_CLK_ENABLE();    GPIO_InitStruct.Pin = GPIO_PIN_11;	GPIO_InitStruct.Mode = GPIO_MODE_INPUT;  <span class="comment">//GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;</span>  GPIO_InitStruct.Pull = GPIO_PULLUP;  GPIO_InitStruct.Speed = GPIO_SPEED_LOW;  HAL_GPIO_Init(GPIOA, &amp;GPIO_InitStruct);    GPIO_InitStruct.Pin = GPIO_PIN_12;  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;  GPIO_InitStruct.Pull = GPIO_PULLUP;  GPIO_InitStruct.Speed = GPIO_SPEED_LOW;  HAL_GPIO_Init(GPIOA, &amp;GPIO_InitStruct);    HAL_NVIC_SetPriority(EXTI15_10_IRQn,<span class="number">0</span>,<span class="number">0</span>);  HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);&#125;<span class="meta">#<span class="meta-keyword">ifdef</span> USE_FULL_ASSERT</span><span class="comment">/**   * @brief Reports the name of the source file and the source line number   * where the assert_param error has occurred.   * @param file: pointer to the source file name   * @param line: assert_param error line source number   * @retval None   */</span><span class="function"><span class="keyword">void</span> <span class="title">assert_failed</span><span class="params">(uint8_t* file, uint32_t line)</span></span>&#123;  <span class="comment">/* User can add his own implementation to report the file name and line number,    ex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */</span>&#125;<span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+<h4 id="stm32f1xx-hal-msp-c"><a href="#stm32f1xx-hal-msp-c" class="headerlink" title="stm32f1xx_hal_msp.c"></a>stm32f1xx_hal_msp.c</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">HAL_MspInit</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;  __HAL_RCC_AFIO_CLK_ENABLE();  HAL_NVIC_SetPriorityGrouping(NVIC_PRIORITYGROUP_4);  <span class="comment">/* System interrupt init*/</span><span class="comment">/* SysTick_IRQn interrupt configuration */</span>  HAL_NVIC_SetPriority(SysTick_IRQn, <span class="number">0</span>, <span class="number">0</span>);    <span class="comment">/**DISABLE: JTAG-DP Disabled and SW-DP Disabled     */</span>  &#125;<span class="comment">// 初始化</span><span class="function"><span class="keyword">void</span> <span class="title">HAL_UART_MspInit</span><span class="params">(UART_HandleTypeDef *huart)</span></span>&#123;	__HAL_RCC_GPIOA_CLK_ENABLE();	__HAL_RCC_USART1_CLK_ENABLE();		GPIO_InitTypeDef GPIO_InitStruct;	GPIO_InitStruct.Pin = GPIO_PIN_9;	GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;	GPIO_InitStruct.Speed = GPIO_SPEED_HIGH;	HAL_GPIO_Init(GPIOA, &amp;GPIO_InitStruct);	GPIO_InitStruct.Pin = GPIO_PIN_10;	HAL_GPIO_Init(GPIOA, &amp;GPIO_InitStruct);&#125;<span class="comment">// 善后</span><span class="function"><span class="keyword">void</span> <span class="title">HAL_UART_MspDeInit</span><span class="params">(UART_HandleTypeDef *huart)</span></span>&#123;	__HAL_RCC_USART1_FORCE_RESET();	__HAL_RCC_USART1_RELEASE_RESET();	HAL_GPIO_DeInit(GPIOA, GPIO_PIN_9);	HAL_GPIO_DeInit(GPIOA, GPIO_PIN_10);&#125;<span class="comment">// 初始化</span><span class="function"><span class="keyword">void</span> <span class="title">HAL_TIM_Base_MspInit</span><span class="params">(TIM_HandleTypeDef* htim_base)</span></span>&#123;  <span class="keyword">if</span>(htim_base-&gt;Instance==TIM3)  &#123;    __TIM3_CLK_ENABLE();    HAL_NVIC_SetPriority(TIM3_IRQn, <span class="number">0</span>, <span class="number">0</span>);    HAL_NVIC_EnableIRQ(TIM3_IRQn);  &#125;&#125;<span class="comment">// 善后</span><span class="function"><span class="keyword">void</span> <span class="title">HAL_TIM_Base_MspDeInit</span><span class="params">(TIM_HandleTypeDef* htim_base)</span> </span>&#123;  <span class="keyword">if</span>(htim_base-&gt;Instance==TIM3)  &#123;    __TIM3_CLK_DISABLE();    HAL_NVIC_DisableIRQ(TIM3_IRQn);  &#125;&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="结果与分析"><a href="#结果与分析" class="headerlink" title="结果与分析"></a>结果与分析</h2><p><img src="http://scn3.github.io/image/lab3/figure9.png" alt=""><br>如上图，是自行车码表的运行结果。当按下STM32上的reset时，码表被重启，并向串口发送“Hello”。启动后默认在模式一下运行，根据定时器输出里程，按当下P11时切换模式，在模式二下运行并根据定时器输出速度，符合实验预期。但由于未对按键进行去抖，可能会出现像第一次那样按下一次PA11却连续出现两次“Pressed”的情况。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/06/12/Lab3/" data-id="cjzu3flpw000e0qnge54ixww5" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Embeded-System/">Embeded System</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Lab2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/06/12/Lab2/" class="article-date">
+  <time datetime="2016-06-13T06:19:59.000Z" itemprop="datePublished">2016-06-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/12/Lab2/">Lab2 ARM指令</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="实际连接示意图"><a href="#实际连接示意图" class="headerlink" title="实际连接示意图"></a>实际连接示意图</h2><p>仅一台macbook pro</p>
+<h2 id="所用器材列表"><a href="#所用器材列表" class="headerlink" title="所用器材列表"></a>所用器材列表</h2><p>macbook一台</p>
+<h2 id="各项测试情况"><a href="#各项测试情况" class="headerlink" title="各项测试情况"></a>各项测试情况</h2><ol>
+<li>生成了Thumb指令还是ARM指令<ul>
+<li>C代码<br><img src="http://scn3.github.io/image/lab2/figure1.png" alt=""></li>
+<li>通过编译参数改成，使得其编译成ARM指令或thumb指令<br><br>默认为ARM指令<br><img src="http://scn3.github.io/image/lab2/figure2.png" alt=""><br><br>加上参数-mthumb编译为thumb指令<br><img src="http://scn3.github.io/image/lab2/figure3.png" alt=""></li>
+<li>汇编代码情况<br><br>用arm-linux-gnueabi-objdump –d 命令查看汇编码<br><br>ARM<br><img src="http://scn3.github.io/image/lab2/figure4.png" alt=""><br><br>thumb<br><img src="http://scn3.github.io/image/lab2/figure5.png" alt=""><br><br>对比上述汇编可知，ARM和Thumb编译的结果最大的不同是32位与16位的区别，且Thumb的指令数比ARM多，但整体上，ARM汇编结果比Thumb的大（ls –l的结果如下）<br><img src="http://scn3.github.io/image/lab2/figure6.png" alt=""></li>
+</ul>
+</li>
+<li>对于ARM指令，能否产生条件执行的指令<ul>
+<li>C代码<br><img src="http://scn3.github.io/image/lab2/figure7.png" alt=""></li>
+<li>ARM指令<br><img src="http://scn3.github.io/image/lab2/figure8.png" alt=""><br><br>观察8454的ble可知，能产生条件执行的指令。</li>
+</ul>
+</li>
+<li>设计C的代码场景，观察是否产生了寄存器移位寻址<ul>
+<li>C代码<br><img src="http://scn3.github.io/image/lab2/figure9.png" alt=""></li>
+<li>在编译参数中加入-O开启优化：<br><img src="http://scn3.github.io/image/lab2/figure10.png" alt=""></li>
+<li>ARM指令<br><img src="http://scn3.github.io/image/lab2/figure11.png" alt=""><br> <br>观察84a4可知，产生了寄存器移位寻址。</li>
+</ul>
+</li>
+<li>设计C的代码场景，观察一个复杂的32位数是如何装载到寄存器的<ul>
+<li>C代码<br><img src="http://scn3.github.io/image/lab2/figure12.png" alt=""></li>
+<li>ARM指令<br> <img src="http://scn3.github.io/image/lab2/figure13.png" alt=""><br> <br>观察可知，32位数先被存在了8460处，然后用ldr指令将之装入寄存器r3</li>
+</ul>
+</li>
+<li>写一个C的多重函数调用的函数，观察并分析<ul>
+<li>C代码<br><img src="http://scn3.github.io/image/lab2/figure14.png" alt=""></li>
+<li>ARM指令<br><img src="http://scn3.github.io/image/lab2/figure15.png" alt=""><br><img src="http://scn3.github.io/image/lab2/figure16.png" alt=""><br><br>观察和分析可知：<br>  <br>a)    调用时的返回地址在lr链接寄存器中，在执行bl指令时，会自动将下一条指令地址传入lr寄存器。<br>  <br>b)    传入的参数在r0和r1中。<br>  <br>c)    在函数堆栈中，本地变量存在返回地址和fp之后。<br>  <br>d)    r0-r3是caller保存而r4是callee保存。</li>
+</ul>
+</li>
+<li>尝试写C的表达式来编译得到MLA指令<ul>
+<li>C代码<br><img src="http://scn3.github.io/image/lab2/figure17.png" alt=""></li>
+<li>ARM指令（编译参数加上-O）<br><img src="http://scn3.github.io/image/lab2/figure18.png" alt=""><br><br>在84ac处出现了mla。</li>
+</ul>
+</li>
+<li>尝试写C的表达式来编译得到BIC指令<ul>
+<li>C代码<br><img src="http://scn3.github.io/image/lab2/figure19.png" alt=""></li>
+<li>ARM指令（编译参数加上-O）<br><img src="http://scn3.github.io/image/lab2/figure20.png" alt=""><br><br>在84a0处出现了bic指令。</li>
+</ul>
+</li>
+<li>编写一个汇编函数，接受一个整数和一个指针做为输入，指针所指应为一个字符串，该汇编函数调用C语言的 printf()函数输出这个字符串的前n个字符，n即为那个整数。在C语言写的main()函数中调用并传递参数给这个汇编函数 来得到输出。<ul>
+<li>代码如下（用“puts”输出字符串）<br><img src="http://scn3.github.io/image/lab2/figure21.png" alt=""></li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/06/12/Lab2/" data-id="cjzu3floz00000qnggk6jbgh3" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Embeded-System/">Embeded System</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Starting-with-your-Raspberry-Pi" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/14/Starting-with-your-Raspberry-Pi/" class="article-date">
+  <time datetime="2016-03-14T12:46:30.000Z" itemprop="datePublished">2016-03-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/14/Starting-with-your-Raspberry-Pi/">Lab 1 启动</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="install-Raspbian-OS-for-Raspberry-Pi"><a href="#install-Raspbian-OS-for-Raspberry-Pi" class="headerlink" title="install Raspbian OS for Raspberry Pi"></a>install Raspbian OS for Raspberry Pi</h2><ol>
+<li><p>Download an img file from <a href="https://www.raspberrypi.org/downloads" target="_blank" rel="external">https://www.raspberrypi.org/downloads</a> </p>
+</li>
+<li><p>Insert  SD card and write the img file to the card. <br> We can use terminal and enter instructions as follows: <img src="http://scn3.github.io/image/Starting-with-your-Raspberry-Pi/figure1.png" alt=""><br><strong>Notice</strong>: If your failed to write to your SD card with “dd” instruction, please check if you have permission to write to your SD card. If your permission is only reading, your can insert your SD card violently. More approaches to solve it: <a href="http://bbs.feng.com/read-htm-tid-3495425.html" target="_blank" rel="external">http://bbs.feng.com/read-htm-tid-3495425.html</a></p>
+</li>
+</ol>
+<h2 id="Connect-to-Raspberry-Pi-with-serial-port"><a href="#Connect-to-Raspberry-Pi-with-serial-port" class="headerlink" title="Connect to Raspberry Pi with serial port"></a>Connect to Raspberry Pi with serial port</h2><ol>
+<li>The Serial Port on Raspberry Pi is shown as following:<br><br><img src="http://scn3.github.io/image/Starting-with-your-Raspberry-Pi/figure2.png" alt=""> <br><br>We can connect it as following(While – TXD; Green – RXD; Black – GND):<br><br><img src="http://scn3.github.io/image/Starting-with-your-Raspberry-Pi/figure3.JPG" alt=""> <br></li>
+<li><p>Install a serial driver if you haven’t installed one. (downloaded from <a href="http://www.proliﬁc.com.tw/" target="_blank" rel="external">http://www.proliﬁc.com.tw/</a>) <br><br>Find your serial port and install “screen” if it hasn’t been installed. </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ls /dev/tty.*</span><br><span class="line">brew install screen</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Connect to your Raspberry</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">screen /dev/tty.usbserial 115200</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>Then you can see the infomation about booting of Raspberry as following: <br><br><img src="http://scn3.github.io/image/Starting-with-your-Raspberry-Pi/figure4.png" alt=""></p>
+<h2 id="Connect-to-Raspberry-Pi-with-LAN"><a href="#Connect-to-Raspberry-Pi-with-LAN" class="headerlink" title="Connect to Raspberry Pi with LAN"></a>Connect to Raspberry Pi with LAN</h2><ol>
+<li>Connect Raspberry Pi to router with cable and connect your Macbook to corresponding LAN.</li>
+<li>Test connection on Mac<img src="http://scn3.github.io/image/Starting-with-your-Raspberry-Pi/figure5.png" alt=""></li>
+<li>Connect to Raspberry <img src="http://scn3.github.io/image/Starting-with-your-Raspberry-Pi/figure6.png" alt=""></li>
+<li>Test connection on Raspbian <img src="http://scn3.github.io/image/Starting-with-your-Raspberry-Pi/figure7.png" alt=""></li>
+</ol>
+<h2 id="Cross-compiling-on-Ubuntu"><a href="#Cross-compiling-on-Ubuntu" class="headerlink" title="Cross compiling(on Ubuntu)"></a>Cross compiling(on Ubuntu)</h2><ol>
+<li><p>Install compiler </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install gcc-arm-linux-gnueabi make ncurses-dev</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Write program<br><img src="http://scn3.github.io/image/Starting-with-your-Raspberry-Pi/figure8.png" alt=""></p>
+</li>
+<li><p>Compile</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arm-linux-gnueabi-gcc hello.c</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Send it to Raspberry</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp a.out pi@192.168.1.101:~/hello.out</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><img src="http://scn3.github.io/image/Starting-with-your-Raspberry-Pi/figure9.png" alt=""><br>5.Run the program on Raspberry Pi<br><img src="http://scn3.github.io/image/Starting-with-your-Raspberry-Pi/figure10.png" alt=""><br>  Successfully!</p>
+<h2 id="Booting-content"><a href="#Booting-content" class="headerlink" title="Booting content"></a>Booting content</h2><p>Uncompressing Linux… done, booting the kernel.<br>[    0.000000] Booting Linux on physical CPU 0x0<br>[    0.000000] Initializing cgroup subsys cpuset<br>[    0.000000] Initializing cgroup subsys cpu<br>[    0.000000] Initializing cgroup subsys cpuacct<br>[    0.000000] Linux version 4.1.18+ (dc4@dc4-XPS13-9333) (gcc version 4.9.3 (c6<br>[    0.000000] CPU: ARMv6-compatible processor [410fb767] revision 7 (ARMv7), cd<br>[    0.000000] CPU: PIPT / VIPT nonaliasing data cache, VIPT nonaliasing instrue<br>[    0.000000] Machine model: Raspberry Pi Model B Rev 2<br>[    0.000000] cma: Reserved 8 MiB at 0x1b400000<br>[    0.000000] Memory policy: Data cache writeback<br>[    0.000000] Built 1 zonelists in Zone order, mobility grouping on.  Total pa0<br>[    0.000000] Kernel command line: dma.dmachans=0x7f35 bcm2708_fb.fbwidth=656 t<br>[    0.000000] PID hash table entries: 2048 (order: 1, 8192 bytes)<br>[    0.000000] Dentry cache hash table entries: 65536 (order: 6, 262144 bytes)<br>[    0.000000] Inode-cache hash table entries: 32768 (order: 5, 131072 bytes)<br>[    0.000000] Memory: 436836K/458752K available (5792K kernel code, 488K rwdat)<br>[    0.000000] Virtual kernel memory layout:<br>[    0.000000]     vector  : 0xffff0000 - 0xffff1000   (   4 kB)<br>[    0.000000]     fixmap  : 0xffc00000 - 0xfff00000   (3072 kB)<br>[    0.000000]     vmalloc : 0xdc800000 - 0xff000000   ( 552 MB)<br>[    0.000000]     lowmem  : 0xc0000000 - 0xdc000000   ( 448 MB)<br>[    0.000000]     modules : 0xbf000000 - 0xc0000000   (  16 MB)<br>[    0.000000]       .text : 0xc0008000 - 0xc076f1f0   (7581 kB)<br>[    0.000000]       .init : 0xc0770000 - 0xc07c8000   ( 352 kB)<br>[    0.000000]       .data : 0xc07c8000 - 0xc0842260   ( 489 kB)<br>[    0.000000]        .bss : 0xc0842260 - 0xc08f63e0   ( 721 kB)<br>[    0.000000] SLUB: HWalign=32, Order=0-3, MinObjects=0, CPUs=1, Nodes=1<br>[    0.000000] NR_IRQS:522<br>[    0.000000] clocksource stc: mask: 0xffffffff max_cycles: 0xffffffff, max_ids<br>[    0.000016] sched_clock: 32 bits at 1000kHz, resolution 1000ns, wraps every s<br>[    0.000057] Switching to timer-based delay loop, resolution 1000ns<br>[    0.000345] Console: colour dummy device 80x30<br>[    0.001272] console [tty1] enabled<br>[    0.001329] Calibrating delay loop (skipped), value calculated using timer f)<br>[    0.001415] pid_max: default: 32768 minimum: 301<br>[    0.001796] Mount-cache hash table entries: 1024 (order: 0, 4096 bytes)<br>[    0.001867] Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes)<br>[    0.002923] Initializing cgroup subsys blkio<br>[    0.003017] Initializing cgroup subsys memory<br>[    0.003086] Initializing cgroup subsys devices<br>[    0.003151] Initializing cgroup subsys freezer<br>[    0.003212] Initializing cgroup subsys net_cls<br>[    0.003329] CPU: Testing write buffer coherency: ok<br>[    0.003449] ftrace: allocating 19747 entries in 58 pages<br>[    0.107987] Setting up static identity map for 0x81c0 - 0x81f8<br>[    0.110179] devtmpfs: initialized<br>[    0.121007] VFP support v0.3: implementor 41 architecture 1 part 20 variant 5<br>[    0.121462] clocksource jiffies: mask: 0xffffffff max_cycles: 0xffffffff, mas<br>[    0.123475] pinctrl core: initialized pinctrl subsystem<br>[    0.124379] NET: Registered protocol family 16<br>[    0.129874] DMA: preallocated 4096 KiB pool for atomic coherent allocations<br>[    0.131376] bcm2708.uart_clock = 3000000<br>[    0.136262] hw-breakpoint: found 6 breakpoint and 1 watchpoint registers.<br>[    0.136341] hw-breakpoint: maximum watchpoint size is 4 bytes.<br>[    0.136549] Serial: AMBA PL011 UART driver<br>[    0.136851] 20201000.uart: ttyAMA0 at MMIO 0x20201000 (irq = 83, base_baud =2<br>[    0.504867] console [ttyAMA0] enabled<br>[    0.509270] bcm2835-mbox 2000b880.mailbox: mailbox enabled<br>[    0.555239] bcm2708-dmaengine 20007000.dma: DMA legacy API manager at f200705<br>[    0.563970] bcm2708-dmaengine 20007000.dma: Initialized 7 DMA channels (+ 1 )<br>[    0.572537] bcm2708-dmaengine 20007000.dma: Load BCM2835 DMA engine driver<br>[    0.579467] bcm2708-dmaengine 20007000.dma: dma_debug:0<br>[    0.585617] SCSI subsystem initialized<br>[    0.589781] usbcore: registered new interface driver usbfs<br>[    0.595503] usbcore: registered new interface driver hub<br>[    0.601035] usbcore: registered new device driver usb<br>[    0.607059] raspberrypi-firmware soc:firmware: Attached to firmware from 2015<br>[    0.642750] Switched to clocksource stc<br>[    0.695940] FS-Cache: Loaded<br>[    0.699246] CacheFiles: Loaded<br>[    0.718043] NET: Registered protocol family 2<br>[    0.723981] TCP established hash table entries: 4096 (order: 2, 16384 bytes)<br>[    0.731171] TCP bind hash table entries: 4096 (order: 2, 16384 bytes)<br>[    0.737806] TCP: Hash tables configured (established 4096 bind 4096)<br>[    0.744448] UDP hash table entries: 256 (order: 0, 4096 bytes)<br>[    0.750345] UDP-Lite hash table entries: 256 (order: 0, 4096 bytes)<br>[    0.757037] NET: Registered protocol family 1<br>[    0.762009] RPC: Registered named UNIX socket transport module.<br>[    0.768067] RPC: Registered udp transport module.<br>[    0.772841] RPC: Registered tcp transport module.<br>[    0.777576] RPC: Registered tcp NFSv4.1 backchannel transport module.<br>[    0.785293] hw perfevents: enabled with armv6_1176 PMU driver, 3 counters ave<br>[    0.794424] futex hash table entries: 256 (order: -1, 3072 bytes)<br>[    0.816876] VFS: Disk quotas dquot_6.6.0<br>[    0.821259] VFS: Dquot-cache hash table entries: 1024 (order 0, 4096 bytes)<br>[    0.830944] FS-Cache: Netfs ‘nfs’ registered for caching<br>[    0.837706] NFS: Registering the id_resolver key type<br>[    0.843012] Key type id_resolver registered<br>[    0.847236] Key type id_legacy registered<br>[    0.855071] Block layer SCSI generic (bsg) driver version 0.4 loaded (major )<br>[    0.863073] io scheduler noop registered<br>[    0.867075] io scheduler deadline registered (default)<br>[    0.872649] io scheduler cfq registered<br>[    0.879094] BCM2708FB: allocated DMA memory 5b800000<br>[    0.884268] BCM2708FB: allocated DMA channel 0 @ f2007000<br>[    0.894833] Console: switching to colour frame buffer device 82x26<br>[    0.906093] Serial: 8250/16550 driver, 0 ports, IRQ sharing disabled<br>[    0.915871] vc-cma: Videocore CMA driver<br>[    0.921553] vc-cma: vc_cma_base      = 0x00000000<br>[    0.928009] vc-cma: vc_cma_size      = 0x00000000 (0 MiB)<br>[    0.935087] vc-cma: vc_cma_initial   = 0x00000000 (0 MiB)<br>[    0.942383] vc-mem: phys_addr:0x00000000 mem_base=0x1ec00000 mem_size:0x2000)<br>[    0.973033] brd: module loaded<br>[    0.986854] loop: module loaded<br>[    0.992666] vchiq: vchiq_init_state: slot_zero = 0xdb880000, is_master = 0<br>[    1.003220] Loading iSCSI transport class v2.0-870.<br>[    1.011298] usbcore: registered new interface driver smsc95xx<br>[    1.018962] dwc_otg: version 3.00a 10-AUG-2012 (platform bus)<br>[    1.226642] Core Release: 2.80a<br>[    1.231335] Setting default values for core params<br>[    1.237715] Finished setting default values for core params<br>[    1.445134] Using Buffer DMA mode<br>[    1.450034] Periodic Transfer Interrupt Enhancement - disabled<br>[    1.457472] Multiprocessor Interrupt Enhancement - disabled<br>[    1.464698] OTG VER PARAM: 0, OTG VER FLAG: 0<br>[    1.470686] Dedicated Tx FIFOs mode<br>[    1.476278] WARN::dwc_otg_hcd_init:1047: FIQ DMA bounce buffers: virt = 0xdb4<br>[    1.489426] FIQ FSM acceleration enabled for :<br>[    1.489426] Non-periodic Split Transactions<br>[    1.489426] Periodic Split Transactions<br>[    1.489426] High-Speed Isochronous Endpoints<br>[    1.512817] WARN::hcd_init_fiq:412: FIQ on core 0 at 0xc03dd6ac<br>[    1.520402] WARN::hcd_init_fiq:413: FIQ ASM at 0xc03dd988 length 36<br>[    1.528316] WARN::hcd_init_fiq:438: MPHI regs_base at 0xdc896000<br>[    1.536032] dwc_otg 20980000.usb: DWC OTG Controller<br>[    1.542644] dwc_otg 20980000.usb: new USB bus registered, assigned bus numbe1<br>[    1.551680] dwc_otg 20980000.usb: irq 32, io mem 0x00000000<br>[    1.558917] Init: Port Power? op_state=1<br>[    1.564448] Init: Power Port (0)<br>[    1.569538] usb usb1: New USB device found, idVendor=1d6b, idProduct=0002<br>[    1.578011] usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber1<br>[    1.586872] usb usb1: Product: DWC OTG Controller<br>[    1.593185] usb usb1: Manufacturer: Linux 4.1.18+ dwc_otg_hcd<br>[    1.600498] usb usb1: SerialNumber: 20980000.usb<br>[    1.607728] hub 1-0:1.0: USB hub found<br>[    1.613225] hub 1-0:1.0: 1 port detected<br>[    1.619892] usbcore: registered new interface driver usb-storage<br>[    1.627994] mousedev: PS/2 mouse device common for all mice<br>[    1.636243] bcm2835-cpufreq: min=700000 max=700000<br>[    1.643005] sdhci: Secure Digital Host Controller Interface driver<br>[    1.650757] sdhci: Copyright(c) Pierre Ossman<br>[    1.657114] sdhost: log_buf @ db813000 (5b813000)<br>[    1.742828] mmc0: sdhost-bcm2835 loaded - DMA enabled (&gt;1)<br>[    1.750481] sdhci-pltfm: SDHCI platform and OF driver helper<br>[    1.778709] ledtrig-cpu: registered to indicate activity on CPUs<br>[    1.786677] hidraw: raw HID events driver (C) Jiri Kosina<br>[    1.794062] usbcore: registered new interface driver usbhid<br>[    1.801233] usbhid: USB HID core driver<br>[    1.811183] Initializing XFRM netlink socket<br>[    1.817349] Indeed it is in host mode hprt0 = 00021501<br>[    1.884644] NET: Registered protocol family 17<br>[    1.891073] Key type dns_resolver registered<br>[    1.904882] registered taskstats version 1<br>[    1.911013] vc-sm: Videocore shared memory driver<br>[    1.917611] [vc_sm_connected_init]: start<br>[    1.924708] [vc_sm_connected_init]: end - returning 0<br>[    1.933922] Waiting for root device /dev/mmcblk0p2…<br>[    1.950491] mmc0: host does not support reading read-only switch, assuming we<br>[    1.963758] mmc0: new high speed SDHC card at address 0007<br>[    1.971747] mmcblk0: mmc0:0007 SD16G 14.5 GiB<br>[    1.979884]  mmcblk0: p1 p2<br>[    2.046030] EXT4-fs (mmcblk0p2): INFO: recovery required on readonly filesysm<br>[    2.055226] EXT4-fs (mmcblk0p2): write access will be enabled during recovery<br>[    2.064135] usb 1-1: new high-speed USB device number 2 using dwc_otg<br>[    2.072444] Indeed it is in host mode hprt0 = 00001101<br>[    2.273232] usb 1-1: New USB device found, idVendor=0424, idProduct=9512<br>[    2.281773] usb 1-1: New USB device strings: Mfr=0, Product=0, SerialNumber=0<br>[    2.291811] hub 1-1:1.0: USB hub found<br>[    2.297586] hub 1-1:1.0: 3 ports detected<br>[    2.582820] usb 1-1.1: new high-speed USB device number 3 using dwc_otg<br>[    2.703234] usb 1-1.1: New USB device found, idVendor=0424, idProduct=ec00<br>[    2.711890] usb 1-1.1: New USB device strings: Mfr=0, Product=0, SerialNumbe0<br>[    2.724104] smsc95xx v1.0.4<br>[    2.787287] smsc95xx 1-1.1:1.0 eth0: register ‘smsc95xx’ at usb-20980000.usb6<br>[    6.670212] EXT4-fs (mmcblk0p2): recovery complete<br>[    7.754578] EXT4-fs (mmcblk0p2): mounted filesystem with ordered data mode. )<br>[    7.766455] VFS: Mounted root (ext4 filesystem) readonly on device 179:2.<br>[    7.785063] devtmpfs: mounted<br>[    7.791036] Freeing unused kernel memory: 352K (c0770000 - c07c8000)<br>[    8.120043] random: systemd urandom read with 71 bits of entropy available<br>[    8.135687] systemd[1]: systemd 215 running in system mode. (+PAM +AUDIT +SE)<br>[    8.153763] systemd[1]: Detected architecture ‘arm’.<br>[    8.278334] NET: Registered protocol family 10<br>[    8.287127] systemd[1]: Inserted module ‘ipv6’<br>[    8.298320] systemd[1]: Set hostname to <raspberrypi>.<br>[    8.485186] uart-pl011 20201000.uart: no DMA platform data<br>[    8.962076] systemd[1]: Cannot add dependency job for unit display-manager.s.<br>[    8.988689] systemd[1]: Starting Forward Password Requests to Wall Directory.<br>[    9.001240] systemd[1]: Started Forward Password Requests to Wall Directory .<br>[    9.013104] systemd[1]: Expecting device dev-ttyAMA0.device…<br>[    9.024126] systemd[1]: Starting Remote File Systems (Pre).<br>[    9.034594] systemd[1]: Reached target Remote File Systems (Pre).<br>[    9.043094] systemd[1]: Starting Encrypted Volumes.<br>[    9.052638] systemd[1]: Reached target Encrypted Volumes.<br>[    9.060463] systemd[1]: Starting Arbitrary Executable File Formats File Syst.<br>[    9.076922] systemd[1]: Set up automount Arbitrary Executable File Formats F.<br>[    9.090928] systemd[1]: Starting Swap.<br>[    9.099740] systemd[1]: Reached target Swap.<br>[    9.106342] systemd[1]: Expecting device dev-mmcblk0p1.device…<br>[    9.117122] systemd[1]: Starting Root Slice.<br>[    9.126193] systemd[1]: Created slice Root Slice.<br>[    9.133051] systemd[1]: Starting User and Session Slice.<br>[    9.143320] systemd[1]: Created slice User and Session Slice.<br>[    9.151125] systemd[1]: Starting /dev/initctl Compatibility Named Pipe.<br>[    9.162726] systemd[1]: Listening on /dev/initctl Compatibility Named Pipe.<br>[    9.171903] systemd[1]: Starting Delayed Shutdown Socket.<br>[    9.182171] systemd[1]: Listening on Delayed Shutdown Socket.<br>[    9.190086] systemd[1]: Starting Journal Socket (/dev/log).<br>[    9.200511] systemd[1]: Listening on Journal Socket (/dev/log).<br>[    9.208573] systemd[1]: Starting udev Control Socket.<br>[    9.218357] systemd[1]: Listening on udev Control Socket.<br>[    9.225922] systemd[1]: Starting udev Kernel Socket.<br>[    9.235508] systemd[1]: Listening on udev Kernel Socket.<br>[    9.242979] systemd[1]: Starting Journal Socket.<br>[    9.252291] systemd[1]: Listening on Journal Socket.<br>[    9.259542] systemd[1]: Starting System Slice.<br>[    9.268783] systemd[1]: Created slice System Slice.<br>[    9.275886] systemd[1]: Starting File System Check on Root Device…<br>[    9.291574] systemd[1]: Starting system-systemd\x2dfsck.slice.<br>[    9.312581] systemd[1]: Created slice system-systemd\x2dfsck.slice.<br>[    9.327037] systemd[1]: Starting system-getty.slice.<br>[    9.342243] systemd[1]: Created slice system-getty.slice.<br>[    9.351208] systemd[1]: Starting system-serial\x2dgetty.slice.<br>[    9.367031] systemd[1]: Created slice system-serial\x2dgetty.slice.<br>[    9.376451] systemd[1]: Starting Increase datagram queue length…<br>[    9.402038] systemd[1]: Starting Restore / save the current clock…<br>[    9.440522] systemd[1]: Starting udev Coldplug all Devices…<br>[    9.524329] systemd[1]: Started Set Up Additional Binary Formats.<br>[    9.555768] systemd[1]: Starting Load Kernel Modules…<br>[    9.599453] systemd[1]: Mounting POSIX Message Queue File System…<br>[    9.681169] systemd[1]: Mounting Debug File System…<br>[    9.797873] systemd[1]: Mounted Huge Pages File System.<br>[    9.815399] systemd[1]: Starting Create list of required static device nodes.<br>[    9.860999] systemd[1]: Starting Slices.<br>[    9.887329] systemd[1]: Reached target Slices.<br>[    9.918267] systemd[1]: Mounted Debug File System.<br>[    9.928122] systemd[1]: Mounted POSIX Message Queue File System.<br>[    9.941558] systemd[1]: Started File System Check on Root Device.<br>[    9.969750] systemd[1]: Started Increase datagram queue length.<br>[    9.983089] systemd[1]: Started Restore / save the current clock.<br>[   10.013142] systemd[1]: Started Load Kernel Modules.<br>[   10.037897] systemd[1]: Started Create list of required static device nodes .<br>[   10.079575] systemd[1]: Time has been changed<br>[   10.192665] systemd[1]: Started udev Coldplug all Devices.<br>[   10.414316] systemd[1]: Starting Create Static Device Nodes in /dev…<br>[   10.432340] systemd[1]: Mounting Configuration File System…<br>[   10.464723] systemd[1]: Starting Apply Kernel Variables…<br>[   10.511916] systemd[1]: Mounted FUSE Control File System.<br>[   10.563216] systemd[1]: Starting Syslog Socket.         </raspberrypi></p>
+<p>Raspbian GNU/Linux 8 raspberrypi ttyAMA0        </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/03/14/Starting-with-your-Raspberry-Pi/" data-id="cjzu3flq5000j0qngywxcof1s" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Embeded-System/">Embeded System</a></li></ul>
+
     </footer>
   </div>
   
@@ -127,7 +926,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/09/welcome/" data-id="cjzu39yzj0000xtngsouq1flp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/09/welcome/" data-id="cjzu3flpa00060qngnzk9jp4z" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -146,15 +945,10 @@
 
   
     
-
-  
-    
-  
-    
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Mot-clés</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Embeded-System/">Embeded System</a></li></ul>
     </div>
   </div>
 
@@ -162,7 +956,26 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Embeded-System/" style="font-size: 10px;">Embeded System</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
     <div class="widget">
       <ul>
         
@@ -171,7 +984,19 @@
           </li>
         
           <li>
-            <a href="/2016/03/09/welcome/">welcome</a>
+            <a href="/2016/06/13/Lab8/">Lab8 网络LED矩阵显示器</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/13/Lab7/">Lab7 字符设备驱动程序</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/13/Lab5/">Lab5 uC/OS 室温计</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/13/Lab6/">Lab6 Linux系统调用</a>
           </li>
         
       </ul>
@@ -187,7 +1012,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2019 scn3<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
